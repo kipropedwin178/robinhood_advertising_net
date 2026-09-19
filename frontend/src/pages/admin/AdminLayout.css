@@ -1,0 +1,268 @@
+
+.admin-layout {
+  min-height: 100vh;
+  display: flex;
+  background: #f5f7fb;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.admin-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 230px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.admin-sidebar-brand {
+  padding: 22px 20px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-sidebar-brand h1 {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.admin-sidebar-brand span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #6b7280;
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.admin-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding: 18px 12px;
+}
+
+.admin-nav-link {
+  display: block;
+
+  padding: 11px 13px;
+
+  border-radius: 6px;
+
+  color: #4b5563;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.admin-nav-link:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.admin-nav-link.active {
+  background: #0d6efd;
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   SIDEBAR FOOTER
+===================================================== */
+
+.admin-sidebar-footer {
+  margin-top: auto;
+
+  padding: 15px 12px;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.admin-sidebar-logout {
+  width: 100%;
+
+  padding: 10px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #dc3545;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.admin-sidebar-logout:hover {
+  opacity: 0.9;
+}
+
+
+/* =====================================================
+   MAIN AREA
+===================================================== */
+
+.admin-layout-main {
+  width: calc(100% - 230px);
+
+  margin-left: 230px;
+
+  min-height: 100vh;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.admin-layout-header {
+  display: flex;
+  align-items: center;
+
+  min-height: 70px;
+
+  padding: 15px 25px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-layout-header h2 {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.admin-layout-header p {
+  margin: 3px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.admin-layout-content {
+  padding: 25px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+  .admin-sidebar {
+    width: 200px;
+  }
+
+  .admin-layout-main {
+    width: calc(100% - 200px);
+
+    margin-left: 200px;
+  }
+
+  .admin-layout-content {
+    padding: 20px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+  .admin-layout {
+    display: block;
+  }
+
+  .admin-sidebar {
+    position: static;
+
+    width: 100%;
+
+    min-height: auto;
+  }
+
+  .admin-sidebar-brand {
+    padding: 16px 18px;
+  }
+
+  .admin-sidebar-nav {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    padding: 10px 12px;
+  }
+
+  .admin-sidebar-footer {
+    padding: 10px 12px;
+  }
+
+  .admin-layout-main {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+  .admin-layout-header {
+    min-height: 60px;
+
+    padding: 13px 18px;
+  }
+
+  .admin-layout-content {
+    padding: 18px;
+  }
+}
+
+
+@media (max-width: 420px) {
+  .admin-sidebar-nav {
+    grid-template-columns: 1fr;
+  }
+}

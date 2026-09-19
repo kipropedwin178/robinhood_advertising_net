@@ -1,0 +1,608 @@
+.admin-users-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+.admin-users-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-users-header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.admin-users-header p {
+  margin: 5px 0 0;
+  color: #6b7280;
+}
+
+.admin-users-back-button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  background: #0d6efd;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-users-back-button:hover {
+  opacity: 0.9;
+}
+
+.admin-users-content {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 35px 40px;
+}
+
+.admin-users-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.admin-users-search {
+  width: 320px;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.admin-users-search:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+.admin-users-table-container {
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.admin-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.admin-users-table th {
+  padding: 15px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.admin-users-table td {
+  padding: 15px;
+  border-bottom: 1px solid #f0f1f3;
+  font-size: 14px;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.admin-users-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.admin-users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-users-username {
+  font-weight: 600;
+  color: #111827 !important;
+}
+
+.admin-role-badge,
+.admin-status-badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-role-super {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.admin-role-admin {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.admin-role-user {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.admin-status-active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.admin-status-inactive {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.admin-view-user-button {
+  border: none;
+  border-radius: 7px;
+  padding: 7px 13px;
+  background: #0d6efd;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-view-user-button:hover {
+  opacity: 0.9;
+}
+
+.admin-users-empty {
+  padding: 40px !important;
+  text-align: center !important;
+  color: #6b7280 !important;
+}
+
+.admin-users-loading,
+.admin-users-error-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.admin-users-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #0d6efd;
+  border-radius: 50%;
+  animation: admin-users-spin 0.8s linear infinite;
+}
+
+.admin-users-loading p {
+  margin-top: 15px;
+  color: #6b7280;
+}
+
+.admin-users-error-card {
+  width: min(90%, 450px);
+  padding: 30px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.admin-users-error-card h2 {
+  margin-bottom: 10px;
+}
+
+.admin-users-error-card p {
+  color: #dc3545;
+}
+
+.admin-users-error-card button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #0d6efd;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+@keyframes admin-users-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-users-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .admin-users-content {
+    padding: 25px 20px;
+  }
+
+  .admin-users-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .admin-users-search {
+    width: 100%;
+  }
+}
+.admin-rbh-number {
+  font-weight: 700;
+  color: #0d6efd;
+}
+.admin-users-balance {
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+}
+/* =====================================================
+   USER ACTION BUTTONS
+===================================================== */
+
+.admin-users-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+/* =====================================================
+   SUSPEND
+===================================================== */
+
+.admin-suspend-user-button {
+  padding: 5px 9px;
+  border: 1px solid #f59e0b;
+  border-radius: 5px;
+  background: #fff7ed;
+  color: #b45309;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-suspend-user-button:hover {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+/* =====================================================
+   UNSUSPEND
+===================================================== */
+
+.admin-unsuspend-user-button {
+  padding: 5px 9px;
+  border: 1px solid #198754;
+  border-radius: 5px;
+  background: #ecfdf3;
+  color: #198754;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-unsuspend-user-button:hover {
+  background: #198754;
+  color: #ffffff;
+}
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+.admin-delete-user-button {
+  padding: 5px 9px;
+  border: 1px solid #dc3545;
+  border-radius: 5px;
+  background: #fff1f2;
+  color: #dc3545;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-delete-user-button:hover {
+  background: #dc3545;
+  color: #ffffff;
+}
+
+/* =====================================================
+   DISABLED ACTION BUTTONS
+===================================================== */
+
+.admin-suspend-user-button:disabled,
+.admin-unsuspend-user-button:disabled,
+.admin-delete-user-button:disabled,
+.admin-view-user-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+/* =====================================================
+   USER CONFIRMATION MODAL
+===================================================== */
+
+.admin-users-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(15, 23, 42, 0.55);
+
+  backdrop-filter: blur(3px);
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.admin-users-modal {
+  width: min(100%, 410px);
+
+  padding: 24px;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.18);
+
+  text-align: center;
+
+  animation: admin-users-modal-enter 0.2s ease-out;
+}
+
+
+/* =====================================================
+   MODAL ICON
+===================================================== */
+
+.admin-users-modal-icon {
+  width: 46px;
+  height: 46px;
+
+  margin: 0 auto 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 22px;
+  font-weight: 800;
+}
+
+
+/* SUSPEND ICON */
+
+.admin-users-modal-icon-suspend {
+  background: #fff7ed;
+  color: #f59e0b;
+  border: 2px solid #f59e0b;
+}
+
+
+/* DELETE ICON */
+
+.admin-users-modal-icon-delete {
+  background: #fff1f2;
+  color: #dc3545;
+  border: 2px solid #dc3545;
+}
+
+
+/* =====================================================
+   MODAL TEXT
+===================================================== */
+
+.admin-users-modal h2 {
+  margin: 0 0 8px;
+
+  color: #111827;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.admin-users-modal p {
+  margin: 0 auto 15px;
+
+  max-width: 340px;
+
+  color: #6b7280;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   USER INFORMATION
+===================================================== */
+
+.admin-users-modal-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+  padding: 10px 12px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+
+  text-align: left;
+}
+
+.admin-users-modal-user strong {
+  color: #111827;
+  font-size: 13px;
+}
+
+.admin-users-modal-user span {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   MODAL ACTIONS
+===================================================== */
+
+.admin-users-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+
+/* =====================================================
+   CANCEL
+===================================================== */
+
+.admin-users-modal-cancel {
+  padding: 8px 14px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #374151;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.admin-users-modal-cancel:hover {
+  background: #f3f4f6;
+}
+
+
+/* =====================================================
+   CONFIRM SUSPEND
+===================================================== */
+
+.admin-users-modal-confirm-suspend {
+  padding: 8px 14px;
+
+  border: 1px solid #f59e0b;
+  border-radius: 6px;
+
+  background: #f59e0b;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.admin-users-modal-confirm-suspend:hover {
+  background: #d97706;
+}
+
+
+/* =====================================================
+   CONFIRM DELETE
+===================================================== */
+
+.admin-users-modal-confirm-delete {
+  padding: 8px 14px;
+
+  border: 1px solid #dc3545;
+  border-radius: 6px;
+
+  background: #dc3545;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.admin-users-modal-confirm-delete:hover {
+  background: #b02a37;
+}
+
+
+/* =====================================================
+   DISABLED MODAL BUTTONS
+===================================================== */
+
+.admin-users-modal button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   MODAL ANIMATION
+===================================================== */
+
+@keyframes admin-users-modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =====================================================
+   MOBILE MODAL
+===================================================== */
+
+@media (max-width: 500px) {
+  .admin-users-modal {
+    padding: 20px;
+  }
+
+  .admin-users-modal h2 {
+    font-size: 18px;
+  }
+
+  .admin-users-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .admin-users-modal-actions button {
+    width: 100%;
+  }
+}

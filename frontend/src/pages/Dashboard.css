@@ -1,0 +1,1112 @@
+/* =========================================================
+   DASHBOARD PAGE
+   ========================================================= */
+
+.dashboard-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 24px 110px;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.dashboard-header {
+  margin-bottom: 26px;
+}
+
+.dashboard-eyebrow {
+  display: inline-block;
+  margin-bottom: 7px;
+  color: #3cb411;
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  color: #102949;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 0.59;
+}
+
+.dashboard-header p {
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 9px;
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.dashboard-error {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 15px 17px;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  background: #fff7f7;
+}
+
+.dashboard-error-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 35px;
+  border-radius: 9px;
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.dashboard-error strong {
+  display: block;
+  color: #991b1b;
+  font-size: 13px;
+}
+
+.dashboard-error p {
+  margin: 3px 0 0;
+  color: #b91c1c;
+  font-size: 12px;
+}
+
+.dashboard-error button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-left: auto;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 13px;
+  background: #0b1f3a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================================================
+   FINANCIAL OVERVIEW
+   ========================================================= */
+
+.dashboard-finance {
+  position: relative;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1px solid #dce5ee;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 5px 22px rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-finance::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #16a34a;
+}
+
+/* =========================================================
+   FINANCE HEADER
+   ========================================================= */
+
+.dashboard-finance-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.dashboard-finance-header h2 {
+  margin: 0;
+  color: #0b1f3a;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.dashboard-finance-header p {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.dashboard-finance-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border: 1px solid #bbf7d0;
+  border-radius: 11px;
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+/* =========================================================
+   AVAILABLE BALANCE
+   ========================================================= */
+
+.dashboard-balance-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 18px 24px;
+  padding: 23px 25px;
+  border-radius: 14px;
+  background: #0b1f3a;
+  box-shadow: 0 5px 16px rgba(11, 31, 58, 0.14);
+}
+
+.dashboard-balance-content {
+  min-width: 0;
+}
+
+.dashboard-balance-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dashboard-balance-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: rgba(22, 163, 74, 0.16);
+  color: #4ade80;
+}
+
+.dashboard-balance-value {
+  display: block;
+  margin-top: 9px;
+  color: #ffffff;
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.dashboard-balance-description {
+  display: block;
+  margin-top: 6px;
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.dashboard-balance-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: rgba(74, 222, 128, 0.18);
+}
+
+/* =========================================================
+   FINANCIAL STATISTICS
+   ========================================================= */
+
+.dashboard-finance-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0 24px 22px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #e2e8f0;
+}
+
+.dashboard-finance-stat {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  padding: 17px;
+  background: #ffffff;
+}
+
+.dashboard-finance-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 9px;
+}
+
+.dashboard-icon-earned {
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.dashboard-icon-withdrawn {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.dashboard-icon-reward {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.dashboard-finance-stat-content {
+  min-width: 0;
+}
+
+.dashboard-finance-stat-content > span {
+  display: block;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.dashboard-finance-stat-content strong {
+  display: block;
+  margin-top: 5px;
+  color: #0b1f3a;
+  font-size: 15px;
+  font-weight: 800;
+  word-break: break-word;
+}
+
+.dashboard-finance-stat-content small {
+  display: block;
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 9px;
+}
+
+/* =========================================================
+   VIEW MORE DETAILS
+   ========================================================= */
+
+.dashboard-details-section {
+  margin-bottom: 32px;
+}
+
+.dashboard-details-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 49px;
+  padding: 10px 15px;
+  border: 1px solid #dce5ee;
+  border-radius: 11px;
+  background: #ffffff;
+  color: #0b1f3a;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 2px 9px rgba(15, 23, 42, 0.04);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dashboard-details-button:hover,
+.dashboard-details-button-open {
+  border-color: #86efac;
+  background: #f8fffb;
+  box-shadow: 0 3px 12px rgba(22, 163, 74, 0.07);
+}
+
+.dashboard-details-button-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.dashboard-details-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.dashboard-chevron {
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.dashboard-chevron-open {
+  transform: rotate(180deg);
+}
+
+/* =========================================================
+   EXPANDED INSIGHTS
+   ========================================================= */
+
+.dashboard-insights {
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px solid #dce5ee;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 3px 15px rgba(15, 23, 42, 0.05);
+}
+
+.dashboard-insights-header {
+  margin-bottom: 17px;
+}
+
+.dashboard-insights-header h2 {
+  margin: 0;
+  color: #0b1f3a;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.dashboard-insights-header p {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.dashboard-insight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.dashboard-insight-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #e5eaf0;
+  border-radius: 11px;
+  background: #f8fafc;
+}
+
+.dashboard-insight-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 33px;
+  flex: 0 0 33px;
+  border-radius: 8px;
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.dashboard-insight-card > div:last-child {
+  min-width: 0;
+}
+
+.dashboard-insight-label {
+  display: block;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.dashboard-insight-card strong {
+  display: block;
+  margin-top: 5px;
+  color: #0b1f3a;
+  font-size: 16px;
+  font-weight: 800;
+  word-break: break-word;
+}
+
+.dashboard-insight-card small {
+  display: block;
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.dashboard-insight-earnings strong,
+.dashboard-insight-income strong {
+  color: #16a34a;
+}
+
+/* =========================================================
+   ACTIVE MEMBERSHIPS
+   ========================================================= */
+
+.dashboard-memberships-section {
+  margin-top: 4px;
+}
+
+.dashboard-section-header {
+  margin-bottom: 17px;
+}
+
+.dashboard-section-header h2 {
+  margin: 0;
+  color: #0b1f3a;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.dashboard-section-header p {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* =========================================================
+   MEMBERSHIP GRID
+   ========================================================= */
+
+.dashboard-membership-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dashboard-membership-card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid #dbe4ee;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 3px 14px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dashboard-membership-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(15, 23, 42, 0.08);
+}
+
+.dashboard-membership-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.dashboard-membership-level {
+  display: block;
+  color: #16a34a;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.dashboard-membership-header h3 {
+  margin: 5px 0 0;
+  color: #0b1f3a;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.dashboard-membership-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #15803d;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.dashboard-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 2px #bbf7d0;
+  animation: activeStatusPulse 0.5s infinite alternate;
+}
+
+@keyframes activeStatusPulse {
+  from {
+    background: #16a34a;
+    box-shadow: 0 0 0 2px #bbf7d0;
+  }
+
+  to {
+    background: #ffffff;
+    box-shadow:
+      0 0 0 2px #16a34a,
+      0 0 8px rgba(22, 163, 74, 0.55);
+  }
+}
+
+/* =========================================================
+   MEMBERSHIP DETAILS
+   ========================================================= */
+
+.dashboard-membership-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding-top: 16px;
+}
+
+.dashboard-membership-detail {
+  min-width: 0;
+}
+
+.dashboard-membership-detail span {
+  display: block;
+  margin-bottom: 5px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.dashboard-membership-detail strong {
+  display: block;
+  color: #0b1f3a;
+  font-size: 13px;
+  font-weight: 800;
+  word-break: break-word;
+}
+
+.dashboard-membership-detail:first-child strong {
+  color: #16a34a;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.dashboard-empty {
+  padding: 42px 20px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.dashboard-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #ecfdf5;
+  color: #16a34a;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.dashboard-empty h3 {
+  margin: 0;
+  color: #0b1f3a;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.dashboard-empty p {
+  max-width: 450px;
+  margin: 7px auto 18px;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.dashboard-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.dashboard-primary-button:hover {
+  background: #15803d;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  padding: 30px;
+  text-align: center;
+}
+
+.dashboard-spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid #dbe4ee;
+  border-top-color: #16a34a;
+  border-radius: 50%;
+  animation: dashboardSpin 0.8s linear infinite;
+}
+
+.dashboard-loading p {
+  margin: 12px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+@keyframes dashboardSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 22px 16px 100px;
+  }
+
+  .dashboard-header {
+    margin-bottom: 20px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 26px;
+  }
+
+  .dashboard-finance-header {
+    padding: 19px;
+  }
+
+  .dashboard-balance-panel {
+    margin: 16px;
+    padding: 20px;
+  }
+
+  .dashboard-balance-value {
+    font-size: 25px;
+  }
+
+  .dashboard-finance-stats {
+    margin: 0 16px 18px;
+  }
+
+  .dashboard-finance-stat {
+    padding: 14px;
+  }
+
+  .dashboard-finance-stat-content strong {
+    font-size: 13px;
+  }
+
+  .dashboard-membership-card {
+    padding: 16px;
+  }
+
+  .dashboard-membership-header h3 {
+    font-size: 15px;
+  }
+
+  .dashboard-membership-detail strong {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .dashboard-page {
+    padding: 18px 10px 95px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 23px;
+  }
+
+  .dashboard-header p {
+    font-size: 12px;
+  }
+
+  /* Finance */
+
+  .dashboard-finance {
+    border-radius: 14px;
+  }
+
+  .dashboard-finance-header {
+    padding: 17px 14px 15px;
+  }
+
+  .dashboard-finance-header h2 {
+    font-size: 16px;
+  }
+
+  .dashboard-finance-header p {
+    font-size: 9px;
+  }
+
+  .dashboard-finance-header-icon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .dashboard-balance-panel {
+    margin: 12px;
+    padding: 17px 15px;
+    border-radius: 12px;
+  }
+
+  .dashboard-balance-label {
+    font-size: 9px;
+  }
+
+  .dashboard-balance-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .dashboard-balance-value {
+    margin-top: 8px;
+    font-size: 21px;
+  }
+
+  .dashboard-balance-description {
+    font-size: 8px;
+  }
+
+  .dashboard-balance-symbol {
+    display: none;
+  }
+
+  .dashboard-finance-stats {
+    margin: 0 12px 14px;
+    border-radius: 10px;
+  }
+
+  .dashboard-finance-stat {
+    display: block;
+    padding: 12px 9px;
+  }
+
+  .dashboard-finance-stat-icon {
+    width: 27px;
+    height: 27px;
+    margin-bottom: 8px;
+  }
+
+  .dashboard-finance-stat-content > span {
+    font-size: 8px;
+  }
+
+  .dashboard-finance-stat-content strong {
+    font-size: 10px;
+  }
+
+  .dashboard-finance-stat-content small {
+    font-size: 7px;
+  }
+
+  /* Details */
+
+  .dashboard-details-section {
+    margin-bottom: 26px;
+  }
+
+  .dashboard-details-button {
+    min-height: 45px;
+    padding: 8px 11px;
+    font-size: 10px;
+  }
+
+  .dashboard-details-button-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .dashboard-insights {
+    padding: 13px;
+  }
+
+  .dashboard-insights-header h2 {
+    font-size: 15px;
+  }
+
+  .dashboard-insights-header p {
+    font-size: 9px;
+  }
+
+  .dashboard-insight-grid {
+    gap: 8px;
+  }
+
+  .dashboard-insight-card {
+    display: block;
+    padding: 11px 9px;
+  }
+
+  .dashboard-insight-icon {
+    width: 27px;
+    height: 27px;
+    margin-bottom: 8px;
+  }
+
+  .dashboard-insight-label {
+    font-size: 8px;
+  }
+
+  .dashboard-insight-card strong {
+    font-size: 11px;
+  }
+
+  .dashboard-insight-card small {
+    font-size: 7px;
+  }
+
+  /* Membership */
+
+  .dashboard-membership-grid {
+    gap: 9px;
+  }
+
+  .dashboard-membership-card {
+    padding: 12px 10px;
+    border-radius: 11px;
+  }
+
+  .dashboard-membership-header {
+    display: block;
+  }
+
+  .dashboard-membership-status {
+    margin-top: 9px;
+    padding: 5px 7px;
+    font-size: 9px;
+  }
+
+  .dashboard-membership-header h3 {
+    font-size: 13px;
+  }
+
+  .dashboard-membership-level {
+    font-size: 8px;
+  }
+
+  .dashboard-membership-details {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    padding-top: 12px;
+  }
+
+  .dashboard-membership-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .dashboard-membership-detail span {
+    margin: 0;
+    font-size: 9px;
+  }
+
+  .dashboard-membership-detail strong {
+    font-size: 10px;
+    text-align: right;
+  }
+
+  /* Error */
+
+  .dashboard-error {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .dashboard-error button {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+/* =========================================================
+   LIFETIME EARNINGS
+========================================================= */
+
+.dashboard-earnings-section {
+  position: relative;
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  padding: 26px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-earnings-section
+.dashboard-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.dashboard-earnings-section
+.dashboard-section-header h2 {
+  margin: 6px 0 6px;
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.dashboard-earnings-section
+.dashboard-section-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.dashboard-earnings-total {
+  min-width: 150px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  text-align: right;
+}
+
+.dashboard-earnings-total span {
+  display: block;
+  margin-bottom: 4px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dashboard-earnings-total strong {
+  color: #15803d;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.dashboard-earnings-chart {
+  width: 100%;
+  height: 340px;
+  box-sizing: border-box;
+  padding: 8px 4px 12px;
+  overflow: visible;
+}
+
+.dashboard-earnings-empty {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  color: #64748b;
+  text-align: center;
+}
+
+.dashboard-earnings-empty svg {
+  color: #16a34a;
+}
+
+.dashboard-earnings-empty p {
+  max-width: 360px;
+  margin: 0;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   EARNINGS CHART - MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .dashboard-earnings-section {
+    margin-top: 18px;
+    margin-bottom: 28px;
+    padding: 20px 16px;
+    border-radius: 15px;
+  }
+
+  .dashboard-earnings-section
+  .dashboard-section-header {
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .dashboard-earnings-section
+  .dashboard-section-header h2 {
+    font-size: 19px;
+  }
+
+  .dashboard-earnings-total {
+    width: 100%;
+    text-align: left;
+  }
+
+  .dashboard-earnings-chart {
+  height: 280px;
+  padding: 4px 0 12px;
+  overflow: visible;
+}
+
+}

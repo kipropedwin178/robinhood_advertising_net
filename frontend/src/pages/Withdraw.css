@@ -1,0 +1,153 @@
+.withdraw-page {
+
+  padding: 20px;
+
+}
+
+.withdraw-page h1 {
+
+  margin-bottom: 20px;
+
+  color: #0b2447;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+}
+
+.withdraw-card {
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  padding: 20px;
+
+  margin-bottom: 20px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+}
+
+.withdraw-card h3 {
+
+  margin-bottom: 15px;
+
+  color: #0b2447;
+
+}
+
+.withdraw-balance {
+
+  margin-bottom: 15px;
+
+  padding: 12px;
+
+  background: #f0fdf4;
+
+  border-radius: 10px;
+
+  color: #475569;
+
+  font-size: 14px;
+
+}
+
+.withdraw-balance strong {
+
+  color: #16a34a;
+
+}
+
+.withdraw-card input {
+
+  width: 100%;
+
+  margin-bottom: 12px;
+
+  padding: 12px;
+
+  border: 1px solid #dbe2ea;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+
+}
+
+.withdraw-card input:focus {
+
+  outline: none;
+
+  border-color: #16a34a;
+
+}
+
+.withdraw-info {
+
+  margin: 5px 0 15px;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+}
+
+.withdraw-info strong {
+
+  color: #0b2447;
+
+}
+
+.withdraw-button {
+
+  width: 100%;
+
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 14px;
+
+  background: #16a34a;
+
+  color: #ffffff;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+}
+
+.withdraw-button:hover {
+
+  background: #15803d;
+
+}
+
+.withdraw-button:disabled {
+
+  background: #94a3b8;
+
+  cursor: not-allowed;
+
+}
+
+@media (max-width: 768px) {
+
+  .withdraw-page {
+
+    padding: 15px;
+
+  }
+
+  .withdraw-page h1 {
+
+    font-size: 24px;
+
+  }
+
+}

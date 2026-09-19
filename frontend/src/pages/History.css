@@ -1,0 +1,345 @@
+.history-page {
+  width: 100%;
+  padding: 30px 0 50px;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.history-header h1 {
+  margin: 0 0 5px;
+  color: #0b1f3a;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.history-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.history-refresh-button {
+  padding: 9px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #0b1f3a;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.history-refresh-button:hover {
+  background: #1e3a5f;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-transaction {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px;
+  border: 1px solid #dbe4ef;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.history-transaction-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.history-transaction-icon.credit {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.history-transaction-icon.debit {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.history-transaction-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.history-transaction-details h3 {
+  margin: 0 0 4px;
+  color: #0b1f3a;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.history-transaction-details p {
+  margin: 0 0 6px;
+  color: #64748b;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.history-transaction-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.history-transaction-details span {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+/* =========================================================
+   STATUS BADGES
+   ========================================================= */
+
+.history-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 9px !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.history-status-pending {
+  background: #fef3c7;
+  color: #92400e !important;
+}
+
+.history-status-completed {
+  background: #dcfce7;
+  color: #15803d !important;
+}
+
+.history-status-rejected {
+  background: #fee2e2;
+  color: #b91c1c !important;
+}
+
+/* =========================================================
+   AMOUNT
+   ========================================================= */
+
+.history-transaction-amount {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.history-transaction-amount.credit {
+  color: #15803d;
+}
+
+.history-transaction-amount.debit {
+  color: #dc2626;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.history-empty {
+  padding: 55px 25px;
+  text-align: center;
+  border: 1px solid #dbe4ef;
+  border-radius: 14px;
+  background: white;
+}
+
+.history-empty-icon {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: #e8f5ed;
+  color: #15803d;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.history-empty h2 {
+  margin: 0 0 8px;
+  color: #0b1f3a;
+  font-size: 19px;
+}
+
+.history-empty p {
+  max-width: 450px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.history-loading {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.history-spinner {
+  width: 35px;
+  height: 35px;
+  border: 3px solid #dbe4ef;
+  border-top-color: #16a34a;
+  border-radius: 50%;
+  animation: history-spin 0.8s linear infinite;
+}
+
+.history-loading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+@keyframes history-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.history-error {
+  padding: 35px 20px;
+  text-align: center;
+  border: 1px solid #fecaca;
+  border-radius: 14px;
+  background: #fffafa;
+}
+
+.history-error h2 {
+  margin: 0 0 8px;
+  color: #991b1b;
+  font-size: 20px;
+}
+
+.history-error p {
+  margin: 0 0 18px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.history-error button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #0b1f3a;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .history-page {
+    padding: 20px 0 35px;
+  }
+
+  .history-header {
+    align-items: flex-start;
+  }
+
+  .history-header h1 {
+    font-size: 22px;
+  }
+
+  .history-header p {
+    font-size: 12px;
+  }
+
+  .history-refresh-button {
+    padding: 8px 11px;
+  }
+
+  .history-transaction {
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .history-transaction-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+  }
+
+  .history-transaction-details h3 {
+    font-size: 12px;
+  }
+
+  .history-transaction-details p {
+    font-size: 11px;
+  }
+
+  .history-transaction-details span {
+    font-size: 9px;
+  }
+
+  .history-status {
+    padding: 2px 6px;
+    font-size: 8px !important;
+  }
+
+  .history-transaction-amount {
+    font-size: 11px;
+  }
+}
+
+
+@media (max-width: 380px) {
+
+  .history-transaction {
+    align-items: flex-start;
+  }
+
+  .history-transaction-details {
+    min-width: 0;
+  }
+
+  .history-transaction-amount {
+    font-size: 10px;
+  }
+
+}

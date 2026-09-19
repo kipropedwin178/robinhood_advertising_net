@@ -1,0 +1,90 @@
+.deposit-page {
+  padding: 20px;
+}
+
+.deposit-page h1 {
+  margin-bottom: 20px;
+  color: #0b2447;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.deposit-card,
+.manual-payment-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.deposit-card h2,
+.manual-payment-card h2 {
+  margin-bottom: 15px;
+  color: #0b2447;
+}
+
+.deposit-card input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.deposit-card input:focus {
+  outline: none;
+  border-color: #16a34a;
+}
+
+.deposit-pay-button {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.deposit-pay-button:hover {
+  background: #15803d;
+}
+
+.manual-toggle-button {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 20px;
+  background: #0b2447;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.manual-payment-card h3 {
+  color: #16a34a;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.manual-payment-card p {
+  margin-bottom: 6px;
+  color: #475569;
+}
+
+@media (max-width: 768px) {
+
+  .deposit-page {
+    padding: 15px;
+  }
+
+  .deposit-page h1 {
+    font-size: 24px;
+  }
+
+}

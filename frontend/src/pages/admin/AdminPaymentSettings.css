@@ -1,0 +1,295 @@
+.admin-payment-settings-page {
+  width: 100%;
+  padding: 25px 0 50px;
+}
+
+.admin-payment-header {
+  margin-bottom: 25px;
+}
+
+.admin-payment-header h1 {
+  margin: 0 0 6px;
+  color: #0b1f3a;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.admin-payment-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* ===================================================== */
+/* MESSAGES */
+/* ===================================================== */
+
+.admin-payment-success,
+.admin-payment-error {
+  padding: 13px 16px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-payment-success {
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+.admin-payment-error {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+
+/* ===================================================== */
+/* FORM */
+/* ===================================================== */
+
+.admin-payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* ===================================================== */
+/* PAYMENT SECTION */
+/* ===================================================== */
+
+.admin-payment-section {
+  background: #ffffff;
+  border: 1px solid #dbe4ef;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.admin-payment-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-payment-section-header h2 {
+  margin: 0 0 5px;
+  color: #0b1f3a;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.admin-payment-section-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* ===================================================== */
+/* TOGGLE */
+/* ===================================================== */
+
+.admin-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  cursor: pointer;
+  color: #166534;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.admin-toggle input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #16a34a;
+  cursor: pointer;
+}
+
+.admin-toggle input:disabled {
+  cursor: not-allowed;
+}
+
+
+/* ===================================================== */
+/* FORM GRID */
+/* ===================================================== */
+
+.admin-payment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-payment-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.admin-payment-field label {
+  color: #334155;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.admin-payment-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.admin-payment-field input:focus {
+  border-color: #16a34a;
+  box-shadow:
+    0 0 0 3px rgba(22, 163, 74, 0.10);
+}
+
+.admin-payment-field input:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+
+/* ===================================================== */
+/* SAVE BUTTON */
+/* ===================================================== */
+
+.admin-payment-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-payment-save-button {
+  min-width: 190px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9px;
+  background: #16a34a;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.admin-payment-save-button:hover:not(:disabled) {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+.admin-payment-save-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.admin-payment-save-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+/* ===================================================== */
+/* LOADING */
+/* ===================================================== */
+
+.admin-payment-loading {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+
+/* ===================================================== */
+/* TABLET / MOBILE */
+/* ===================================================== */
+
+@media (max-width: 700px) {
+
+  .admin-payment-settings-page {
+    padding: 20px 0 35px;
+  }
+
+  .admin-payment-header h1 {
+    font-size: 23px;
+  }
+
+  .admin-payment-header p {
+    font-size: 12px;
+  }
+
+  .admin-payment-section {
+    padding: 17px;
+  }
+
+  .admin-payment-section-header {
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .admin-payment-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .admin-payment-actions {
+    justify-content: stretch;
+  }
+
+  .admin-payment-save-button {
+    width: 100%;
+  }
+}
+
+
+/* ===================================================== */
+/* SMALL PHONES */
+/* ===================================================== */
+
+@media (max-width: 380px) {
+
+  .admin-payment-section {
+    padding: 14px;
+  }
+
+  .admin-payment-section-header h2 {
+    font-size: 17px;
+  }
+
+  .admin-payment-field input {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,282 @@
+/* =====================================================
+   ABOUT PAGE
+===================================================== */
+
+.about-page {
+  width: 100%;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.about-hero {
+  padding: 70px 20px;
+  background: linear-gradient(
+    135deg,
+    #0b2447 0%,
+    #0b1f3a 65%,
+    #102f52 100%
+  );
+  border-radius: 0 0 20px 20px;
+}
+
+.about-hero-content {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-eyebrow,
+.about-section-heading > span,
+.about-cta span {
+  color: #4ade80;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.about-hero h1 {
+  margin: 12px 0 18px;
+  color: white;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.12;
+}
+
+.about-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #cbd5e1;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   MAIN SECTION
+===================================================== */
+
+.about-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 65px 20px;
+
+  scroll-margin-top: 100px;
+}
+
+.about-section-heading {
+  max-width: 850px;
+  margin-bottom: 35px;
+}
+
+.about-section-heading h2 {
+  margin: 9px 0 12px;
+  color: #0b2447;
+  font-size: 30px;
+}
+
+.about-section-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.about-feature-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.about-feature-card {
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: white;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.about-feature-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.09);
+}
+
+.about-feature-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 17px;
+
+  border-radius: 11px;
+
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.about-feature-card h3 {
+  margin: 0 0 8px;
+  color: #0b2447;
+  font-size: 16px;
+}
+
+.about-feature-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   LEGAL SECTIONS
+===================================================== */
+
+.legal-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 65px 20px;
+
+  scroll-margin-top: 100px;
+}
+
+.legal-section h2 {
+  margin-bottom: 18px;
+  color: #0b2447;
+  font-size: 28px;
+}
+
+.legal-section p {
+  margin-bottom: 14px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   CAREERS
+===================================================== */
+
+.careers-ending {
+  margin-top: 35px;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.about-cta {
+  max-width: 1100px;
+  margin: 0 auto 20px;
+
+  padding: 28px 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  border-radius: 16px;
+
+  background: #0b2447;
+}
+
+.about-cta h2 {
+  margin: 7px 0 0;
+  color: white;
+  font-size: 21px;
+}
+
+.about-cta-button {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 11px 16px;
+
+  border-radius: 9px;
+
+  background: #16a34a;
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.about-cta-button:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .about-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-cta {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .about-hero {
+    padding: 50px 18px;
+  }
+
+  .about-section,
+  .legal-section {
+    padding: 45px 15px;
+  }
+
+  .about-section-heading h2,
+  .legal-section h2 {
+    font-size: 25px;
+  }
+
+  .about-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+
+  .about-cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

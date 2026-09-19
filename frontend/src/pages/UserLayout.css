@@ -1,0 +1,660 @@
+/* =====================================================
+   USER LAYOUT
+===================================================== */
+
+.user-layout {
+  min-height: 100vh;
+  background: #f5f8fc;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.user-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #0b1f3a;
+  box-shadow: 0 3px 14px rgba(15, 23, 42, 0.16);
+}
+
+
+.user-navbar-inner {
+  width: 100%;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 0 24px;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.user-logo {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   DESKTOP NAVIGATION
+===================================================== */
+
+.user-desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+
+.user-nav-link {
+  padding: 9px 13px;
+  border-radius: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+
+.user-nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+
+.user-nav-link.active {
+  background: #16a34a;
+  color: white;
+}
+
+
+/* =====================================================
+   NAVBAR ACTIONS
+===================================================== */
+
+.user-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.user-balance {
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+.user-balance span {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+.user-balance strong {
+  color: #4ade80;
+  font-size: 13px;
+}
+
+
+.user-profile-button,
+.user-logout-button {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.user-profile-button {
+  background: #16a34a;
+  color: white;
+}
+
+
+.user-profile-button:hover {
+  background: #15803d;
+}
+
+
+.user-logout-button {
+  background: #1e3a5f;
+  color: #e2e8f0;
+}
+
+
+.user-logout-button:hover {
+  background: #274b73;
+}
+
+
+/* =====================================================
+   HAMBURGER BUTTON
+===================================================== */
+
+.user-hamburger-button {
+  width: 42px;
+  height: 42px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+
+
+.user-hamburger-button span {
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: white;
+}
+
+
+/* =====================================================
+   SIDE DRAWER OVERLAY
+===================================================== */
+
+.user-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(2, 12, 27, 0.62);
+  backdrop-filter: blur(2px);
+}
+
+
+/* =====================================================
+   SIDE DRAWER
+===================================================== */
+
+.user-side-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1200;
+  width: 390px;
+  max-width: 90vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 22px;
+  background: #0b1f3a;
+  box-shadow: -8px 0 30px rgba(2, 12, 27, 0.3);
+  transform: translateX(105%);
+  transition: transform 0.28s ease;
+}
+
+
+.user-side-drawer.open {
+  transform: translateX(0);
+}
+
+
+/* =====================================================
+   DRAWER HEADER
+===================================================== */
+
+.user-side-drawer-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.user-side-drawer-header span {
+  display: block;
+  margin-bottom: 5px;
+  color: #4ade80;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+
+.user-side-drawer-header h2 {
+  margin: 0;
+  color: white;
+  font-size: 21px;
+}
+
+
+.user-drawer-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 27px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+
+.user-drawer-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* =====================================================
+   SUMMARY SECTION
+===================================================== */
+
+.user-summary-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+.user-summary-card {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+.user-summary-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: rgba(22, 163, 74, 0.18);
+  color: #4ade80;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+
+.user-summary-card span {
+  display: block;
+  margin-bottom: 3px;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+
+.user-summary-card strong {
+  display: block;
+  overflow: hidden;
+  color: white;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.user-summary-card.earned strong,
+.user-summary-card.reward strong {
+  color: #4ade80;
+}
+
+
+/* =====================================================
+   DRAWER NAVIGATION
+===================================================== */
+
+.user-drawer-navigation {
+  margin-top: 25px;
+}
+
+
+.user-drawer-navigation h3 {
+  margin: 0 0 10px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+
+.user-drawer-navigation button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #dbeafe;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.user-drawer-navigation button:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+}
+
+
+.user-drawer-navigation button span {
+  width: 24px;
+  color: #4ade80;
+  text-align: center;
+}
+
+
+/* =====================================================
+   DRAWER LOGOUT
+===================================================== */
+
+.user-drawer-logout {
+  width: 100%;
+  margin-top: auto;
+  padding: 12px;
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  border-radius: 9px;
+  background: rgba(220, 38, 38, 0.1);
+  color: #fca5a5;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+.user-drawer-logout:hover {
+  background: rgba(220, 38, 38, 0.18);
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.user-main {
+  min-height: calc(100vh - 68px);
+  padding-bottom: 75px;
+}
+
+
+.user-main-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+
+/* =====================================================
+   BOTTOM NAVIGATION
+===================================================== */
+
+.user-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+  display: none;
+  justify-content: space-around;
+  padding: 8px 5px;
+  border-top: 1px solid #dbe4ef;
+  background: white;
+  box-shadow: 0 -3px 14px rgba(15, 23, 42, 0.08);
+}
+
+
+.user-bottom-link {
+  min-width: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 5px;
+  border-radius: 8px;
+  color: #64748b;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+.user-bottom-link.active {
+  color: #15803d;
+}
+
+
+.user-bottom-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .user-navbar-inner {
+    gap: 14px;
+    padding: 0 16px;
+  }
+
+
+  .user-desktop-nav {
+    gap: 2px;
+  }
+
+
+  .user-nav-link {
+    padding: 8px 9px;
+    font-size: 12px;
+  }
+
+
+  .user-balance {
+    min-width: 105px;
+  }
+
+
+  .user-profile-button,
+  .user-logout-button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .user-navbar-inner {
+    min-height: 62px;
+    justify-content: space-between;
+    padding: 0 12px;
+  }
+
+
+  .user-desktop-nav {
+    display: none;
+  }
+
+
+  .user-navbar-actions {
+    margin-left: auto;
+  }
+
+
+  .user-balance {
+    min-width: auto;
+    padding: 6px 9px;
+  }
+
+
+  .user-balance span {
+    font-size: 9px;
+  }
+
+
+  .user-balance strong {
+    font-size: 11px;
+  }
+
+
+  .user-profile-button,
+  .user-logout-button {
+    display: none;
+  }
+
+
+  .user-hamburger-button {
+    display: flex;
+  }
+
+
+  .user-main {
+    min-height: calc(100vh - 62px);
+    padding-bottom: 72px;
+  }
+
+
+  .user-main-container {
+    padding: 0 12px;
+  }
+
+
+  .user-bottom-nav {
+    display: flex;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+
+  .user-logo {
+    font-size: 21px;
+  }
+
+
+  .user-balance strong {
+    font-size: 10px;
+  }
+
+
+  .user-side-drawer {
+    width: 340px;
+    max-width: 92vw;
+    padding: 18px;
+  }
+
+
+  .user-summary-section {
+    gap: 8px;
+  }
+
+
+  .user-summary-card {
+    padding: 11px 8px;
+  }
+
+
+  .user-summary-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+
+  .user-summary-card strong {
+    font-size: 11px;
+  }
+
+}
+/* =====================================================
+   DEPOSIT / WITHDRAW NAVIGATION BUTTONS
+===================================================== */
+
+.user-deposit-button,
+.user-withdraw-button {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* DEPOSIT - GREEN */
+
+.user-deposit-button {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.user-deposit-button:hover {
+  background: #3803fa;
+  transform: translateY(-1px);
+}
+
+
+/* WITHDRAW - DARK BLUE */
+
+.user-withdraw-button {
+  background: #c0a31f;
+  color: #ffffff;
+}
+
+.user-withdraw-button:hover {
+  background: #256ac5;
+  transform: translateY(-1px);
+}

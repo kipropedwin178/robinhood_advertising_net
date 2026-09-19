@@ -1,0 +1,469 @@
+.tasks-page {
+  width: 100%;
+  padding: 20px 0 40px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.tasks-header {
+  margin-bottom: 24px;
+}
+
+.tasks-header h1 {
+  margin: 0 0 8px;
+  color: #0b2447;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.tasks-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   LOADING / ERROR
+========================================================= */
+
+.tasks-loading,
+.tasks-error {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tasks-loading {
+  color: #64748b;
+}
+
+.tasks-error {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+
+/* =========================================================
+   TASK GRID
+========================================================= */
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   TASK CARD
+========================================================= */
+
+.task-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  border-left: 5px solid #16a34a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.10);
+}
+
+.task-level {
+  display: inline-block;
+  background: #0b2447;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.task-card h3 {
+  color: #0b2447;
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.task-card p {
+  color: #475569;
+  margin: 0 0 15px;
+  font-size: 13px;
+}
+
+.task-card strong {
+  color: #16a34a;
+}
+
+
+/* =========================================================
+   VIEW ADVERTISEMENT BUTTON
+========================================================= */
+
+.task-button {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.task-button:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+.task-button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   ADVERTISEMENT PANEL
+========================================================= */
+
+.advertisement-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   ADVERTISEMENT HEADER
+========================================================= */
+
+.advertisement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.advertisement-header h2 {
+  margin: 0;
+  color: #0b2447;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.advertisement-header span {
+  flex-shrink: 0;
+  background: #16a34a;
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+========================================================= */
+
+.advertisement-image {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   PRODUCT INFORMATION
+========================================================= */
+
+.advertisement-info {
+  margin-bottom: 20px;
+}
+
+.advertisement-info p {
+  margin: 0 0 10px;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.advertisement-info p:last-child {
+  margin-bottom: 0;
+}
+
+.advertisement-info strong {
+  color: #0b2447;
+}
+
+
+/* =========================================================
+   ADVERTISEMENT MESSAGE
+========================================================= */
+
+.advertisement-message {
+  display: block;
+  width: 100%;
+  min-height: 180px;
+  resize: none;
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 18px;
+  background: #f8fafc;
+  color: #334155;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+.advertisement-message:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.10);
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.advertisement-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.copy-button,
+.advertise-button,
+.complete-button,
+.completed-button {
+  min-height: 44px;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+/* =========================================================
+   COPY BUTTON
+========================================================= */
+
+.copy-button {
+  background: #0b2447;
+  color: #ffffff;
+}
+
+.copy-button:hover {
+  background: #12345f;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ADVERTISE BUTTON
+========================================================= */
+
+.advertise-button {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.advertise-button:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   COMPLETE BUTTON
+========================================================= */
+
+.complete-button {
+  background: #14532d;
+  color: #ffffff;
+}
+
+.complete-button:hover:not(:disabled) {
+  background: #166534;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   COMPLETED BUTTON
+========================================================= */
+
+.completed-button {
+  background: #94a3b8;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   DISABLED BUTTONS
+========================================================= */
+
+.copy-button:disabled,
+.advertise-button:disabled,
+.complete-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* =========================================================
+   TASK INSTRUCTION
+========================================================= */
+
+.task-instruction {
+  margin: 15px 0 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .tasks-page {
+    padding: 18px 0 35px;
+  }
+
+  .tasks-header h1 {
+    font-size: 24px;
+  }
+
+  .tasks-header p {
+    font-size: 13px;
+  }
+
+  .tasks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .task-card {
+    padding: 14px;
+  }
+
+  .task-card h3 {
+    font-size: 15px;
+  }
+
+  .task-card p {
+    font-size: 12px;
+  }
+
+  .task-button {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .advertisement-panel {
+    padding: 15px;
+  }
+
+  .advertisement-header {
+    align-items: flex-start;
+  }
+
+  .advertisement-header h2 {
+    font-size: 18px;
+  }
+
+  .advertisement-header span {
+    font-size: 11px;
+    padding: 4px 9px;
+  }
+
+  .advertisement-image {
+    max-height: 260px;
+  }
+
+  .advertisement-info p {
+    font-size: 13px;
+  }
+
+  .advertisement-message {
+    min-height: 160px;
+    font-size: 13px;
+  }
+
+  .advertisement-actions {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tasks-header h1 {
+    font-size: 22px;
+  }
+
+  .advertisement-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .advertisement-header span {
+    align-self: flex-start;
+  }
+
+}

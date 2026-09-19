@@ -1,0 +1,551 @@
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.site-footer {
+  width: 100%;
+  margin-top: 50px;
+  background: #081a31;
+  color: #cbd5e1;
+}
+
+
+/* =====================================================
+   MAIN FOOTER
+===================================================== */
+
+.site-footer-main {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.site-footer-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 55px 24px 50px;
+
+  display: grid;
+
+  /* FIVE COLUMNS ON LARGE SCREENS */
+  grid-template-columns:
+    1.5fr
+    1fr
+    1fr
+    1fr
+    1.25fr;
+
+  gap: 40px;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   FOOTER COLUMNS
+===================================================== */
+
+.site-footer-column {
+  min-width: 0;
+}
+
+
+.site-footer-column h3 {
+  margin: 0 0 18px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: white;
+  text-decoration: none;
+
+  margin-bottom: 18px;
+}
+
+
+.footer-brand-mark {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #16a34a;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+}
+
+
+.footer-brand-name {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+
+.footer-description {
+  max-width: 330px;
+
+  margin: 0 0 20px;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   COMPANY LINKS
+===================================================== */
+
+.footer-company-links {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+
+/* =====================================================
+   LINK LIST
+===================================================== */
+
+.footer-link-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+
+.footer-link-list a,
+.footer-link-list button,
+.footer-company-links a,
+.footer-company-links button {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 6px 0;
+
+  border: none;
+  background: transparent;
+
+  color: #94a3b8;
+
+  text-decoration: none;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.footer-link-list a:hover,
+.footer-link-list button:hover,
+.footer-company-links a:hover,
+.footer-company-links button:hover {
+  color: #4ade80;
+  transform: translateX(3px);
+}
+
+
+.footer-link-list a:focus-visible,
+.footer-link-list button:focus-visible,
+.footer-company-links a:focus-visible,
+.footer-company-links button:focus-visible,
+.footer-bottom-links button:focus-visible,
+.footer-brand:focus-visible {
+  outline: 2px solid #4ade80;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+
+.footer-contact-item > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  color: #4ade80;
+}
+
+
+.footer-contact-item div {
+  min-width: 0;
+}
+
+
+.footer-contact-item span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #64748b;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+.footer-contact-item strong {
+  display: block;
+
+  color: #cbd5e1;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  word-break: break-word;
+}
+
+
+.footer-contact-note {
+  margin-top: 18px;
+  padding: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+
+.footer-contact-note span {
+  color: #64748b;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   BOTTOM BAR
+===================================================== */
+
+.site-footer-bottom {
+  background: #061426;
+}
+
+
+.site-footer-bottom-inner {
+  width: 100%;
+  max-width: 1400px;
+
+  min-height: 60px;
+
+  margin: 0 auto;
+  padding: 12px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  box-sizing: border-box;
+}
+
+
+.site-footer-bottom p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 11px;
+}
+
+
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+
+.footer-bottom-links button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 4px 0;
+
+  border: none;
+  background: transparent;
+
+  color: #64748b;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+
+.footer-bottom-links button:hover {
+  color: #4ade80;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .site-footer-container {
+    /* THREE COLUMNS */
+    grid-template-columns:
+      1.4fr
+      1fr
+      1fr;
+
+    gap: 35px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL SCREENS
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .site-footer {
+    margin-top: 35px;
+  }
+
+
+  .site-footer-container {
+    /* ALWAYS TWO COLUMNS */
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 28px 18px;
+
+    padding: 38px 18px 35px;
+  }
+
+
+  .site-footer-column {
+    padding-bottom: 25px;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.07);
+  }
+
+
+  /*
+     Keep the footer compact and balanced
+     on two-column mobile layout.
+  */
+
+  .footer-description {
+    max-width: 100%;
+  }
+
+
+  .footer-link-list a,
+  .footer-link-list button,
+  .footer-company-links a,
+  .footer-company-links button {
+    padding: 7px 0;
+
+    font-size: 12px;
+  }
+
+
+  .footer-contact-list {
+    gap: 13px;
+  }
+
+
+  .footer-contact-item {
+    gap: 8px;
+  }
+
+
+  .footer-contact-item > svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  .footer-contact-item strong {
+    font-size: 11px;
+  }
+
+
+  .footer-contact-note {
+    padding: 8px;
+  }
+
+
+  .site-footer-bottom-inner {
+    min-height: auto;
+
+    padding: 18px;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+  }
+
+
+  .footer-bottom-links {
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 14px;
+  }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+  .site-footer-container {
+    /*
+       IMPORTANT:
+       Still TWO columns.
+       Never switch to one column.
+    */
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 24px 12px;
+
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+
+  .site-footer-column h3 {
+    font-size: 12px;
+  }
+
+
+  .footer-brand {
+    gap: 7px;
+  }
+
+
+  .footer-brand-mark {
+    width: 34px;
+    height: 34px;
+
+    font-size: 11px;
+  }
+
+
+  .footer-brand-name {
+    font-size: 17px;
+  }
+
+
+  .footer-description {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+
+  .footer-link-list a,
+  .footer-link-list button,
+  .footer-company-links a,
+  .footer-company-links button {
+    gap: 6px;
+
+    font-size: 11px;
+  }
+
+
+  .footer-link-list svg,
+  .footer-company-links svg {
+    width: 13px;
+    height: 13px;
+  }
+
+
+  .footer-contact-item {
+    gap: 6px;
+  }
+
+
+  .footer-contact-item span {
+    font-size: 8px;
+  }
+
+
+  .footer-contact-item strong {
+    font-size: 10px;
+  }
+
+
+  .footer-bottom-links {
+    gap: 10px;
+  }
+
+}

@@ -1,0 +1,701 @@
+.admin-memberships {
+  width: 100%;
+}
+
+
+/* =====================================================
+   PAGE HEADING
+===================================================== */
+
+.admin-memberships-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.admin-memberships-heading h1 {
+  margin: 0 0 5px;
+  color: #111827;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.admin-memberships-heading p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   CREATE BUTTON
+===================================================== */
+
+.admin-membership-create-button {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 7px;
+  background: #0d6efd;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-membership-create-button:hover {
+  background: #0b5ed7;
+}
+
+.admin-membership-create-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.admin-membership-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.admin-membership-summary > div {
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.admin-membership-summary span {
+  display: block;
+  margin-bottom: 5px;
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.admin-membership-summary strong {
+  color: #111827;
+  font-size: 18px;
+}
+
+
+/* =====================================================
+   MEMBERSHIP GRID
+===================================================== */
+
+.admin-memberships-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+
+/* =====================================================
+   MEMBERSHIP CARD
+===================================================== */
+
+.admin-membership-card {
+  min-width: 0;
+  padding: 17px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
+}
+
+.admin-membership-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.admin-membership-level {
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: #e9f2ff;
+  color: #0d6efd;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.admin-membership-status {
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.admin-membership-status.active {
+  background: #e8f7ee;
+  color: #198754;
+}
+
+.admin-membership-status.inactive {
+  background: #f1f3f5;
+  color: #6c757d;
+}
+
+
+/* =====================================================
+   PRODUCT PHOTO
+===================================================== */
+
+.admin-membership-photo {
+  width: 100%;
+  height: 170px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border-radius: 7px;
+  background: #f8f9fa;
+}
+
+.admin-membership-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+
+/* =====================================================
+   MEMBERSHIP NAME
+===================================================== */
+
+.admin-membership-card h2 {
+  margin: 0 0 8px;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.admin-membership-description {
+  min-height: 40px;
+  margin: 0 0 15px;
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   MEMBERSHIP DETAILS
+===================================================== */
+
+.admin-membership-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 13px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.admin-membership-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-membership-detail span {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.admin-membership-detail strong {
+  color: #111827;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+
+
+/* =====================================================
+   ADVERTISEMENT
+===================================================== */
+
+.admin-membership-ad {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 7px;
+  background: #f8f9fa;
+}
+
+.admin-membership-ad > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #111827;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.admin-membership-ad p {
+  margin: 0 0 8px;
+  color: #6b7280;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.admin-membership-ad a {
+  color: #0d6efd;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.admin-membership-ad a:hover {
+  text-decoration: underline;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.admin-membership-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-top: 15px;
+}
+
+.admin-membership-actions button {
+  padding: 8px 5px;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-membership-edit {
+  background: #e9f2ff;
+  color: #0d6efd;
+}
+
+.admin-membership-edit:hover {
+  background: #d8e9ff;
+}
+
+.admin-membership-toggle.activate {
+  background: #e8f7ee;
+  color: #198754;
+}
+
+.admin-membership-toggle.activate:hover {
+  background: #d5f1df;
+}
+
+.admin-membership-toggle.deactivate {
+  background: #fff3cd;
+  color: #997404;
+}
+
+.admin-membership-toggle.deactivate:hover {
+  background: #ffecb5;
+}
+
+.admin-membership-delete {
+  background: #fce8e8;
+  color: #dc3545;
+}
+
+.admin-membership-delete:hover {
+  background: #f8d7da;
+}
+
+.admin-membership-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.admin-memberships-empty {
+  padding: 50px 20px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+}
+
+.admin-memberships-empty h2 {
+  margin: 0 0 7px;
+  color: #111827;
+  font-size: 18px;
+}
+
+.admin-memberships-empty p {
+  margin: 0 0 15px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.admin-memberships-empty button {
+  padding: 9px 15px;
+  border: none;
+  border-radius: 6px;
+  background: #0d6efd;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.admin-memberships-loading {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.admin-memberships-loading p {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.admin-memberships-spinner {
+  width: 34px;
+  height: 34px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #0d6efd;
+  border-radius: 50%;
+  animation: admin-memberships-spin 0.8s linear infinite;
+}
+
+@keyframes admin-memberships-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.admin-memberships-error {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-memberships-error-card {
+  width: min(90%, 400px);
+  padding: 22px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.admin-memberships-error-card h2 {
+  margin: 0 0 8px;
+  color: #111827;
+  font-size: 18px;
+}
+
+.admin-memberships-error-card p {
+  margin: 0;
+  color: #dc3545;
+  font-size: 13px;
+}
+
+.admin-memberships-error-card button {
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #0d6efd;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.admin-membership-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(17, 24, 39, 0.55);
+}
+
+.admin-membership-modal-card {
+  width: min(100%, 760px);
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+  border-radius: 10px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.admin-membership-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 20px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-membership-modal-header h2 {
+  margin: 0 0 5px;
+  color: #111827;
+  font-size: 18px;
+}
+
+.admin-membership-modal-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.admin-membership-modal-close {
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #f1f3f5;
+  color: #495057;
+
+  font-size: 20px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.admin-membership-modal-close:hover {
+  background: #e9ecef;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.admin-membership-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+
+  padding: 20px;
+}
+
+.admin-membership-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-membership-form-group.full {
+  grid-column: 1 / -1;
+}
+
+.admin-membership-form-group label {
+  color: #374151;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.admin-membership-form-group input,
+.admin-membership-form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 9px 10px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #111827;
+
+  font-family: inherit;
+  font-size: 12px;
+
+  outline: none;
+}
+
+.admin-membership-form-group textarea {
+  resize: vertical;
+}
+
+.admin-membership-form-group input:focus,
+.admin-membership-form-group textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.08);
+}
+
+
+/* =====================================================
+   FORM ERROR
+===================================================== */
+
+.admin-membership-form-error {
+  margin: 15px 20px 0;
+  padding: 10px 12px;
+
+  border-radius: 6px;
+
+  background: #fce8e8;
+  color: #dc3545;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   FORM ACTIONS
+===================================================== */
+
+.admin-membership-form-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+
+  padding-top: 5px;
+}
+
+.admin-membership-form-actions button {
+  padding: 9px 15px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.admin-membership-cancel {
+  background: #f1f3f5;
+  color: #495057;
+}
+
+.admin-membership-cancel:hover {
+  background: #e9ecef;
+}
+
+.admin-membership-save {
+  background: #0d6efd;
+  color: #ffffff;
+}
+
+.admin-membership-save:hover {
+  background: #0b5ed7;
+}
+
+.admin-membership-form-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .admin-memberships-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .admin-memberships-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-membership-create-button {
+    width: 100%;
+  }
+
+  .admin-membership-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-memberships-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-membership-form {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-membership-form-group.full {
+    grid-column: auto;
+  }
+
+  .admin-membership-form-actions {
+    grid-column: auto;
+  }
+
+  .admin-membership-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-membership-card {
+    padding: 15px;
+  }
+
+  .admin-membership-modal {
+    padding: 10px;
+  }
+
+  .admin-membership-modal-card {
+    max-height: 95vh;
+  }
+
+}

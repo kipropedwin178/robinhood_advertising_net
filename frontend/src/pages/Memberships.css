@@ -1,0 +1,856 @@
+.memberships-page {
+
+  width: 100%;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.memberships-header {
+
+  margin-bottom: 16px;
+
+}
+
+.memberships-header h1 {
+
+  margin: 0 0 4px;
+
+  color: #111827;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+}
+
+.memberships-header p {
+
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.memberships-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.membership-card {
+
+  min-width: 0;
+
+  padding: 13px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 9px;
+
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.035);
+
+}
+
+.membership-card-top {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  margin-bottom: 10px;
+
+}
+
+.membership-level {
+
+  padding: 4px 7px;
+
+  border-radius: 5px;
+
+  background: #e9f2ff;
+
+  color: #0d6efd;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+}
+
+.membership-active {
+
+  padding: 4px 7px;
+
+  border-radius: 5px;
+
+  background: #e8f7ee;
+
+  color: #198754;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+}
+
+
+/* =====================================================
+   PRODUCT PHOTO
+===================================================== */
+
+.membership-product-photo {
+
+  width: 100%;
+
+  height: 135px;
+
+  margin-bottom: 10px;
+
+  overflow: hidden;
+
+  border-radius: 7px;
+
+  background: #f8f9fa;
+
+}
+
+.membership-product-photo img {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+}
+
+
+/* =====================================================
+   PRODUCT
+===================================================== */
+
+.membership-card h2 {
+
+  margin: 0 0 5px;
+
+  color: #111827;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+}
+
+.membership-description {
+
+  min-height: 34px;
+
+  margin: 0 0 11px;
+
+  color: #6b7280;
+
+  font-size: 11px;
+
+  line-height: 1.45;
+
+}
+
+
+/* =====================================================
+   INFORMATION
+===================================================== */
+
+.membership-info {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  padding: 10px 0;
+
+  border-top: 1px solid #e5e7eb;
+
+  border-bottom: 1px solid #e5e7eb;
+
+}
+
+.membership-info-row {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+}
+
+.membership-info-row span {
+
+  color: #6b7280;
+
+  font-size: 10px;
+
+}
+
+.membership-info-row strong {
+
+  color: #111827;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  text-align: right;
+
+}
+
+.membership-info-row strong.reward {
+
+  color: #198754;
+
+}
+
+
+/* =====================================================
+   ADVERTISEMENT
+===================================================== */
+
+.membership-advertisement {
+
+  margin-top: 10px;
+
+  padding: 9px;
+
+  border-radius: 6px;
+
+  background: #f8f9fa;
+
+}
+
+.membership-advertisement h3 {
+
+  margin: 0 0 4px;
+
+  color: #111827;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+}
+
+.membership-advertisement p {
+
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+
+}
+
+
+/* =====================================================
+   ACTIVATE BUTTON
+===================================================== */
+
+.membership-activate-button {
+
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 8px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: #0d6efd;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+
+}
+
+.membership-activate-button:hover {
+
+  background: #0b5ed7;
+
+}
+
+.membership-activate-button:disabled {
+
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+}
+
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+.memberships-message {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+
+  padding: 9px 11px;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+
+}
+
+.memberships-message p {
+
+  flex: 1;
+
+  margin: 0;
+
+}
+
+.memberships-message.success {
+
+  background: #e8f7ee;
+
+  color: #198754;
+
+}
+
+.memberships-message.error {
+
+  background: #fce8e8;
+
+  color: #dc3545;
+
+}
+
+.memberships-message button {
+
+  padding: 5px 8px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: #0d6efd;
+
+  color: #ffffff;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.memberships-empty {
+
+  padding: 40px 20px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 9px;
+
+}
+
+.memberships-empty h2 {
+
+  margin: 0 0 6px;
+
+  color: #111827;
+
+  font-size: 17px;
+
+}
+
+.memberships-empty p {
+
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.memberships-loading {
+
+  min-height: 250px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+}
+
+.memberships-loading p {
+
+  margin-top: 8px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+}
+
+.memberships-spinner {
+
+  width: 30px;
+
+  height: 30px;
+
+  border: 3px solid #e5e7eb;
+
+  border-top-color: #0d6efd;
+
+  border-radius: 50%;
+
+  animation: memberships-spin 0.8s linear infinite;
+
+}
+
+@keyframes memberships-spin {
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .memberships-grid {
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  }
+
+  .membership-product-photo {
+
+    height: 145px;
+
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+
+  .memberships-header h1 {
+
+    font-size: 20px;
+
+  }
+
+  .memberships-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+  }
+
+  .membership-card {
+
+    padding: 12px;
+
+  }
+
+  .membership-product-photo {
+
+    height: 160px;
+
+  }
+
+}
+
+
+/* =====================================================
+   ACTIVATED MEMBERSHIP
+===================================================== */
+
+.membership-active.activated {
+
+  background: #dff7e8;
+
+  color: #198754;
+
+}
+
+.membership-activated-button {
+
+  background: #e8f7ee;
+
+  color: #198754;
+
+  cursor: not-allowed;
+
+  opacity: 1;
+
+}
+
+.membership-activated-button:hover {
+
+  background: #e8f7ee;
+
+}
+
+
+/* =====================================================
+   CUSTOM CONFIRMATION MODAL
+===================================================== */
+
+.membership-confirmation-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(10, 22, 40, 0.62);
+
+  backdrop-filter: blur(3px);
+
+  animation: membership-modal-fade-in 0.18s ease;
+
+}
+
+
+.membership-confirmation-modal {
+
+  width: 100%;
+
+  max-width: 390px;
+
+  padding: 25px 22px 22px;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22);
+
+  text-align: center;
+
+  animation: membership-modal-slide-up 0.2s ease;
+
+}
+
+
+.membership-confirmation-icon {
+
+  width: 46px;
+
+  height: 46px;
+
+  margin: 0 auto 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e8f7ee;
+
+  color: #198754;
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+}
+
+
+.membership-confirmation-modal h2 {
+
+  margin: 0 0 9px;
+
+  color: #111827;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+}
+
+
+.membership-confirmation-modal p {
+
+  margin: 0;
+
+  color: #4b5563;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+}
+
+
+.membership-confirmation-modal p strong {
+
+  color: #0d6efd;
+
+}
+
+
+.membership-confirmation-warning {
+
+  margin-top: 9px !important;
+
+  padding: 8px 10px;
+
+  border-radius: 6px;
+
+  background: #f8f9fa;
+
+  color: #6b7280 !important;
+
+  font-size: 10px !important;
+
+}
+
+
+.membership-confirmation-actions {
+
+  display: flex;
+
+  gap: 9px;
+
+  margin-top: 19px;
+
+}
+
+
+.membership-confirmation-actions button {
+
+  flex: 1;
+
+  padding: 9px 10px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.1s ease;
+
+}
+
+
+.membership-confirmation-actions button:active {
+
+  transform: scale(0.98);
+
+}
+
+
+.membership-confirmation-actions button:disabled {
+
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+}
+
+
+.membership-confirmation-cancel {
+
+  background: #f1f3f5;
+
+  color: #495057;
+
+}
+
+
+.membership-confirmation-cancel:hover {
+
+  background: #e2e6ea;
+
+}
+
+
+.membership-confirmation-confirm {
+
+  background: #198754;
+
+  color: #ffffff;
+
+}
+
+
+.membership-confirmation-confirm:hover {
+
+  background: #157347;
+
+}
+
+
+@keyframes membership-modal-fade-in {
+
+  from {
+
+    opacity: 0;
+
+  }
+
+  to {
+
+    opacity: 1;
+
+  }
+
+}
+
+
+@keyframes membership-modal-slide-up {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(12px) scale(0.98);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+
+  }
+
+}
+
+
+/* =====================================================
+   MODAL MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+
+  .membership-confirmation-overlay {
+
+    padding: 15px;
+
+  }
+
+  .membership-confirmation-modal {
+
+    max-width: 100%;
+
+    padding: 22px 18px 18px;
+
+    border-radius: 11px;
+
+  }
+
+  .membership-confirmation-actions {
+
+    gap: 8px;
+
+  }
+
+}
