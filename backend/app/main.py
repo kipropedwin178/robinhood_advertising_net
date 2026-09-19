@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.core.config import FRONTEND_URL
+from app.database.init_db import init_db
+
 from app.routes.auth import router as auth_router
 from app.routes.users import router as users_router
 from app.routes.memberships import router as memberships_router
@@ -36,6 +39,15 @@ app = FastAPI(
 
 
 # =========================================================
+# DATABASE INITIALIZATION
+# =========================================================
+
+@app.on_event("startup")
+def startup_event():
+    init_db()
+
+
+# =========================================================
 # CORS
 # =========================================================
 
@@ -44,6 +56,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        FRONTEND_URL,
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -75,7 +88,9 @@ app.include_router(
     admin_membership_router
 )
 
-app.include_router(referral_router)
+app.include_router(
+    referral_router
+)
 
 app.include_router(
     admin_uploads_router
@@ -104,7 +119,6 @@ app.include_router(
 
 @app.get("/")
 def root():
-
     return {
         "message": "Robinhood Advertising Network API"
     }
