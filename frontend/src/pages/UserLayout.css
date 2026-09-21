@@ -26,7 +26,7 @@
   min-height: 68px;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
   padding: 0 24px;
 }
 
@@ -55,20 +55,22 @@
 .user-desktop-nav {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   flex: 1;
   min-width: 0;
 }
 
 .user-nav-link {
-  padding: 9px 13px;
+  padding: 9px 12px;
   border-radius: 8px;
   color: #cbd5e1;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
-  transition: 0.2s ease;
   white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .user-nav-link:hover {
@@ -89,7 +91,7 @@
 .user-navbar-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
@@ -97,7 +99,7 @@
   display: flex;
   flex-direction: column;
   min-width: 120px;
-  padding: 7px 12px;
+  padding: 7px 11px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.06);
@@ -117,32 +119,40 @@
 
 
 /* =====================================================
-   PROFILE / LOGOUT
+   PROFILE
 ===================================================== */
 
-.user-profile-button,
-.user-logout-button {
+.user-profile-button {
   border: none;
   border-radius: 8px;
-  padding: 9px 13px;
+  padding: 9px 12px;
+  background: #16a34a;
+  color: white;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
 }
 
-.user-profile-button {
-  background: #16a34a;
-  color: white;
-}
-
 .user-profile-button:hover {
   background: #15803d;
 }
 
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
 .user-logout-button {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 12px;
   background: #1e3a5f;
   color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .user-logout-button:hover {
@@ -151,14 +161,14 @@
 
 
 /* =====================================================
-   DEPOSIT / WITHDRAW NAVIGATION BUTTONS
+   DEPOSIT / WITHDRAW
 ===================================================== */
 
 .user-deposit-button,
 .user-withdraw-button {
   border: none;
   border-radius: 8px;
-  padding: 9px 13px;
+  padding: 9px 12px;
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;
@@ -197,7 +207,7 @@
 
 
 /* =====================================================
-   HAMBURGER BUTTON
+   HAMBURGER
 ===================================================== */
 
 .user-hamburger-button {
@@ -213,6 +223,10 @@
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.06);
   cursor: pointer;
+}
+
+.user-hamburger-button:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .user-hamburger-button span {
@@ -461,26 +475,37 @@
   right: 0;
   bottom: 0;
   z-index: 900;
+
   display: none;
+
   justify-content: space-around;
   align-items: center;
+
   padding: 10px 3px;
+
   border-top: 1px solid #dbe4ef;
   background: rgb(15, 6, 51);
-  box-shadow: 0 -3px 14px rgba(34, 95, 236, 0.08);
+
+  box-shadow:
+    0 -3px 14px rgba(34, 95, 236, 0.08);
 }
 
 .user-bottom-link {
   flex: 1;
   min-width: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 3px;
   padding: 5px;
+
   border-radius: 8px;
+
   color: #ebedf0;
   text-decoration: none;
+
   font-size: 10px;
   font-weight: 600;
   white-space: nowrap;
@@ -497,27 +522,37 @@
 
 
 /* =====================================================
-   TABLET / MEDIUM SCREENS
+   MEDIUM / TABLET / SMALL LAPTOP
+   701px - 1199px
+
+   Desktop links are moved into the drawer.
+   Important actions remain visible.
 ===================================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1199px) {
 
   .user-navbar-inner {
+    min-height: 64px;
     gap: 12px;
     padding: 0 16px;
   }
 
   .user-desktop-nav {
-    gap: 2px;
-  }
-
-  .user-nav-link {
-    padding: 8px 8px;
-    font-size: 12px;
+    display: none;
   }
 
   .user-navbar-actions {
+    margin-left: auto;
     gap: 7px;
+  }
+
+  .user-profile-button,
+  .user-logout-button {
+    display: none;
+  }
+
+  .user-hamburger-button {
+    display: flex;
   }
 
   .user-deposit-button,
@@ -530,16 +565,17 @@
     min-width: 105px;
   }
 
-  .user-profile-button,
-  .user-logout-button {
-    padding: 8px 10px;
-    font-size: 12px;
+  .user-main {
+    min-height: calc(100vh - 64px);
   }
 }
 
 
 /* =====================================================
    MOBILE
+   700px and below
+
+   Bottom navigation becomes available.
 ===================================================== */
 
 @media (max-width: 700px) {
@@ -558,32 +594,18 @@
 
   .user-logo {
     font-size: 21px;
-    flex-shrink: 0;
   }
 
 
   /* -----------------------------------------------
-     DESKTOP NAVIGATION HIDDEN
-  ------------------------------------------------ */
+     ACTIONS
 
-  .user-desktop-nav {
-    display: none;
-  }
-
-
-  /* -----------------------------------------------
-     MOBILE NAVBAR ACTIONS
-     
      Deposit + Withdraw + Balance + Hamburger
-     ALL REMAIN AVAILABLE
+     all remain visible.
   ------------------------------------------------ */
 
   .user-navbar-actions {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
+    gap: 5px;
   }
 
 
@@ -593,10 +615,8 @@
 
   .user-deposit-button {
     display: block;
-    padding: 7px 9px;
+    padding: 7px 8px;
     font-size: 10px;
-    border-radius: 7px;
-    white-space: nowrap;
   }
 
 
@@ -606,10 +626,8 @@
 
   .user-withdraw-button {
     display: block;
-    padding: 7px 9px;
+    padding: 7px 8px;
     font-size: 10px;
-    border-radius: 7px;
-    white-space: nowrap;
   }
 
 
@@ -618,9 +636,8 @@
   ------------------------------------------------ */
 
   .user-balance {
-    min-width: auto;
+    min-width: 0;
     padding: 5px 7px;
-    flex-shrink: 1;
   }
 
   .user-balance span {
@@ -633,26 +650,13 @@
 
 
   /* -----------------------------------------------
-     PROFILE + LOGOUT
-     
-     These are available through the drawer.
-  ------------------------------------------------ */
-
-  .user-profile-button,
-  .user-logout-button {
-    display: none;
-  }
-
-
-  /* -----------------------------------------------
      HAMBURGER
   ------------------------------------------------ */
 
   .user-hamburger-button {
     display: flex;
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
   }
 
 
@@ -662,7 +666,7 @@
 
   .user-main {
     min-height: calc(100vh - 62px);
-    padding-bottom: 78px;
+    padding-bottom: 82px;
   }
 
   .user-main-container {
@@ -677,7 +681,6 @@
 
   .user-bottom-nav {
     display: flex;
-    width: 100%;
   }
 
   .user-bottom-link {
@@ -700,14 +703,5 @@
     width: 390px;
     max-width: 92vw;
     padding: 20px;
-  }
-
-
-  /* -----------------------------------------------
-     FOOTER
-  ------------------------------------------------ */
-
-  .user-footer {
-    margin-bottom: 64px;
   }
 }
