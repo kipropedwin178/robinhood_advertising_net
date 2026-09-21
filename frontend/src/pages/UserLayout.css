@@ -21,7 +21,6 @@
   box-shadow: 0 3px 14px rgba(15, 23, 42, 0.16);
 }
 
-
 .user-navbar-inner {
   width: 100%;
   min-height: 68px;
@@ -44,6 +43,8 @@
   font-weight: 800;
   letter-spacing: 1px;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 
@@ -56,8 +57,8 @@
   align-items: center;
   gap: 6px;
   flex: 1;
+  min-width: 0;
 }
-
 
 .user-nav-link {
   padding: 9px 13px;
@@ -67,14 +68,13 @@
   font-size: 14px;
   font-weight: 600;
   transition: 0.2s ease;
+  white-space: nowrap;
 }
-
 
 .user-nav-link:hover {
   background: rgba(255, 255, 255, 0.08);
   color: white;
 }
-
 
 .user-nav-link.active {
   background: #16a34a;
@@ -90,8 +90,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
 }
-
 
 .user-balance {
   display: flex;
@@ -101,8 +101,8 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
 }
-
 
 .user-balance span {
   color: #94a3b8;
@@ -110,12 +110,15 @@
   font-weight: 600;
 }
 
-
 .user-balance strong {
   color: #4ade80;
   font-size: 13px;
 }
 
+
+/* =====================================================
+   PROFILE / LOGOUT
+===================================================== */
 
 .user-profile-button,
 .user-logout-button {
@@ -125,25 +128,22 @@
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
 }
-
 
 .user-profile-button {
   background: #16a34a;
   color: white;
 }
 
-
 .user-profile-button:hover {
   background: #15803d;
 }
-
 
 .user-logout-button {
   background: #1e3a5f;
   color: #e2e8f0;
 }
-
 
 .user-logout-button:hover {
   background: #274b73;
@@ -163,6 +163,7 @@
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
   transition:
     background 0.2s ease,
     transform 0.2s ease;
@@ -176,9 +177,8 @@
   color: #ffffff;
 }
 
-
 .user-deposit-button:hover {
-  background: #3803fa;
+  background: #15803d;
   transform: translateY(-1px);
 }
 
@@ -190,9 +190,8 @@
   color: #ffffff;
 }
 
-
 .user-withdraw-button:hover {
-  background: #256ac5;
+  background: #a98f18;
   transform: translateY(-1px);
 }
 
@@ -215,7 +214,6 @@
   background: rgba(255, 255, 255, 0.06);
   cursor: pointer;
 }
-
 
 .user-hamburger-button span {
   width: 20px;
@@ -260,7 +258,6 @@
   transition: transform 0.28s ease;
 }
 
-
 .user-side-drawer.open {
   transform: translateX(0);
 }
@@ -279,7 +276,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
 .user-side-drawer-header span {
   display: block;
   margin-bottom: 5px;
@@ -289,13 +285,11 @@
   letter-spacing: 1px;
 }
 
-
 .user-side-drawer-header h2 {
   margin: 0;
   color: white;
   font-size: 21px;
 }
-
 
 .user-drawer-close {
   width: 36px;
@@ -308,7 +302,6 @@
   line-height: 1;
   cursor: pointer;
 }
-
 
 .user-drawer-close:hover {
   background: rgba(255, 255, 255, 0.15);
@@ -326,7 +319,6 @@
   margin-top: 20px;
 }
 
-
 .user-summary-card {
   min-width: 0;
   display: flex;
@@ -337,7 +329,6 @@
   border-radius: 11px;
   background: rgba(255, 255, 255, 0.06);
 }
-
 
 .user-summary-icon {
   width: 32px;
@@ -353,7 +344,6 @@
   font-weight: 800;
 }
 
-
 .user-summary-card span {
   display: block;
   margin-bottom: 3px;
@@ -361,7 +351,6 @@
   font-size: 9px;
   font-weight: 600;
 }
-
 
 .user-summary-card strong {
   display: block;
@@ -371,7 +360,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 
 .user-summary-card.earned strong,
 .user-summary-card.reward strong {
@@ -387,7 +375,6 @@
   margin-top: 25px;
 }
 
-
 .user-drawer-navigation h3 {
   margin: 0 0 10px;
   color: #64748b;
@@ -396,7 +383,6 @@
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
-
 
 .user-drawer-navigation button {
   width: 100%;
@@ -414,12 +400,10 @@
   cursor: pointer;
 }
 
-
 .user-drawer-navigation button:hover {
   background: rgba(255, 255, 255, 0.07);
   color: white;
 }
-
 
 .user-drawer-navigation button span {
   width: 24px;
@@ -445,7 +429,6 @@
   cursor: pointer;
 }
 
-
 .user-drawer-logout:hover {
   background: rgba(220, 38, 38, 0.18);
 }
@@ -459,7 +442,6 @@
   min-height: calc(100vh - 68px);
   padding-bottom: 75px;
 }
-
 
 .user-main-container {
   width: 100%;
@@ -488,9 +470,9 @@
   box-shadow: 0 -3px 14px rgba(34, 95, 236, 0.08);
 }
 
-
 .user-bottom-link {
-  min-width: 55px;
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -501,13 +483,12 @@
   text-decoration: none;
   font-size: 10px;
   font-weight: 600;
+  white-space: nowrap;
 }
-
 
 .user-bottom-link.active {
   color: #03f75c;
 }
-
 
 .user-bottom-icon {
   font-size: 17px;
@@ -516,32 +497,38 @@
 
 
 /* =====================================================
-   TABLET
+   TABLET / MEDIUM SCREENS
 ===================================================== */
 
 @media (max-width: 900px) {
 
   .user-navbar-inner {
-    gap: 14px;
+    gap: 12px;
     padding: 0 16px;
   }
-
 
   .user-desktop-nav {
     gap: 2px;
   }
 
-
   .user-nav-link {
-    padding: 8px 9px;
+    padding: 8px 8px;
     font-size: 12px;
   }
 
+  .user-navbar-actions {
+    gap: 7px;
+  }
+
+  .user-deposit-button,
+  .user-withdraw-button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
 
   .user-balance {
     min-width: 105px;
   }
-
 
   .user-profile-button,
   .user-logout-button {
@@ -549,6 +536,7 @@
     font-size: 12px;
   }
 }
+
 
 /* =====================================================
    MOBILE
@@ -558,47 +546,76 @@
 
   .user-navbar-inner {
     min-height: 62px;
-    justify-content: space-between;
-    gap: 6px;
-    padding: 0 8px;
+    width: 100%;
+    padding: 0 10px;
+    gap: 8px;
   }
 
+
+  /* -----------------------------------------------
+     LOGO
+  ------------------------------------------------ */
+
+  .user-logo {
+    font-size: 21px;
+    flex-shrink: 0;
+  }
+
+
+  /* -----------------------------------------------
+     DESKTOP NAVIGATION HIDDEN
+  ------------------------------------------------ */
 
   .user-desktop-nav {
     display: none;
   }
 
 
+  /* -----------------------------------------------
+     MOBILE NAVBAR ACTIONS
+     
+     Deposit + Withdraw + Balance + Hamburger
+     ALL REMAIN AVAILABLE
+  ------------------------------------------------ */
+
   .user-navbar-actions {
     margin-left: auto;
-    gap: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     flex-shrink: 0;
   }
 
 
-  /* DEPOSIT */
+  /* -----------------------------------------------
+     DEPOSIT
+  ------------------------------------------------ */
 
   .user-deposit-button {
     display: block;
-    padding: 7px 8px;
+    padding: 7px 9px;
     font-size: 10px;
     border-radius: 7px;
     white-space: nowrap;
   }
 
 
-  /* WITHDRAW */
+  /* -----------------------------------------------
+     WITHDRAW
+  ------------------------------------------------ */
 
   .user-withdraw-button {
     display: block;
-    padding: 7px 8px;
+    padding: 7px 9px;
     font-size: 10px;
     border-radius: 7px;
     white-space: nowrap;
   }
 
 
-  /* BALANCE */
+  /* -----------------------------------------------
+     BALANCE
+  ------------------------------------------------ */
 
   .user-balance {
     min-width: auto;
@@ -606,18 +623,20 @@
     flex-shrink: 1;
   }
 
-
   .user-balance span {
     font-size: 8px;
   }
-
 
   .user-balance strong {
     font-size: 10px;
   }
 
 
-  /* PROFILE + LOGOUT */
+  /* -----------------------------------------------
+     PROFILE + LOGOUT
+     
+     These are available through the drawer.
+  ------------------------------------------------ */
 
   .user-profile-button,
   .user-logout-button {
@@ -625,35 +644,41 @@
   }
 
 
-  /* HAMBURGER */
+  /* -----------------------------------------------
+     HAMBURGER
+  ------------------------------------------------ */
 
   .user-hamburger-button {
     display: flex;
+    width: 40px;
+    height: 40px;
     flex-shrink: 0;
-    width: 38px;
-    height: 38px;
   }
 
 
-  /* MAIN */
+  /* -----------------------------------------------
+     MAIN CONTENT
+  ------------------------------------------------ */
 
   .user-main {
     min-height: calc(100vh - 62px);
-    padding-bottom: 72px;
+    padding-bottom: 78px;
   }
 
-
   .user-main-container {
+    width: 100%;
     padding: 0 12px;
   }
 
 
-  /* BOTTOM NAVIGATION */
+  /* -----------------------------------------------
+     BOTTOM NAVIGATION
+  ------------------------------------------------ */
 
   .user-bottom-nav {
     display: flex;
+    width: 100%;
   }
-
 
   .user-bottom-link {
     flex: 1;
@@ -662,166 +687,27 @@
     font-size: 10px;
   }
 
-
   .user-bottom-icon {
     font-size: 17px;
   }
-}
 
 
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
-@media (max-width: 380px) {
-
-  .user-logo {
-    font-size: 19px;
-  }
-
-
-  .user-navbar-inner {
-    gap: 4px;
-    padding: 0 6px;
-  }
-
-
-  .user-navbar-actions {
-    gap: 3px;
-  }
-
-
-  .user-deposit-button,
-  .user-withdraw-button {
-    padding: 6px 6px;
-    font-size: 9px;
-  }
-
-
-  .user-balance {
-    padding: 4px 5px;
-  }
-
-
-  .user-balance span {
-    font-size: 7px;
-  }
-
-
-  .user-balance strong {
-    font-size: 9px;
-  }
-
-
-  .user-hamburger-button {
-    width: 36px;
-    height: 36px;
-  }
-
+  /* -----------------------------------------------
+     DRAWER
+  ------------------------------------------------ */
 
   .user-side-drawer {
-    width: 340px;
+    width: 390px;
     max-width: 92vw;
-    padding: 18px;
+    padding: 20px;
   }
 
 
-  .user-summary-section {
-    gap: 8px;
-  }
+  /* -----------------------------------------------
+     FOOTER
+  ------------------------------------------------ */
 
-
-  .user-summary-card {
-    padding: 11px 8px;
-  }
-
-
-  .user-summary-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-
-  .user-summary-card strong {
-    font-size: 11px;
-  }
-
-
-  .user-bottom-link {
-    font-size: 9px;
-  }
-
-
-  .user-bottom-icon {
-    font-size: 16px;
-  }
-}
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
-@media (max-width: 380px) {
-
-  .user-logo {
-    font-size: 21px;
-  }
-
-
-  .user-navbar-actions {
-    gap: 6px;
-  }
-
-
-  .user-balance {
-    padding: 5px 7px;
-  }
-
-
-  .user-balance strong {
-    font-size: 10px;
-  }
-
-
-  .user-hamburger-button {
-    width: 40px;
-    height: 40px;
-  }
-
-
-  .user-side-drawer {
-    width: 340px;
-    max-width: 92vw;
-    padding: 18px;
-  }
-
-
-  .user-summary-section {
-    gap: 8px;
-  }
-
-
-  .user-summary-card {
-    padding: 11px 8px;
-  }
-
-
-  .user-summary-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-
-  .user-summary-card strong {
-    font-size: 11px;
-  }
-
-
-  .user-bottom-link {
-    font-size: 9px;
-  }
-
-
-  .user-bottom-icon {
-    font-size: 16px;
+  .user-footer {
+    margin-bottom: 64px;
   }
 }
