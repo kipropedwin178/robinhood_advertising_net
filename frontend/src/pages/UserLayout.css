@@ -475,17 +475,12 @@
   right: 0;
   bottom: 0;
   z-index: 900;
-
   display: none;
-
   justify-content: space-around;
   align-items: center;
-
   padding: 10px 3px;
-
   border-top: 1px solid #dbe4ef;
   background: rgb(15, 6, 51);
-
   box-shadow:
     0 -3px 14px rgba(34, 95, 236, 0.08);
 }
@@ -493,19 +488,14 @@
 .user-bottom-link {
   flex: 1;
   min-width: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 3px;
   padding: 5px;
-
   border-radius: 8px;
-
   color: #ebedf0;
   text-decoration: none;
-
   font-size: 10px;
   font-weight: 600;
   white-space: nowrap;
@@ -703,5 +693,107 @@
     width: 390px;
     max-width: 92vw;
     padding: 20px;
+  }
+}
+
+
+/* =====================================================
+   TOUCH DEVICES
+   IMPORTANT:
+
+   This rule is independent of orientation.
+
+   Therefore a phone behaves the same way in:
+   - Portrait
+   - Landscape
+
+   Desktop navigation remains hidden.
+   Hamburger remains visible.
+   Bottom navigation remains visible.
+===================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+  /* -----------------------------------------------
+     NEVER SHOW DESKTOP NAVIGATION ON TOUCH DEVICES
+  ------------------------------------------------ */
+
+  .user-desktop-nav {
+    display: none !important;
+  }
+
+
+  /* -----------------------------------------------
+     PROFILE AND LOGOUT STAY IN DRAWER
+  ------------------------------------------------ */
+
+  .user-profile-button,
+  .user-logout-button {
+    display: none !important;
+  }
+
+
+  /* -----------------------------------------------
+     HAMBURGER ALWAYS AVAILABLE
+  ------------------------------------------------ */
+
+  .user-hamburger-button {
+    display: flex !important;
+  }
+
+
+  /* -----------------------------------------------
+     BOTTOM NAVIGATION ALWAYS AVAILABLE
+     ON TOUCH DEVICES
+  ------------------------------------------------ */
+
+  .user-bottom-nav {
+    display: flex !important;
+  }
+
+
+  /* -----------------------------------------------
+     MAIN CONTENT CLEARANCE
+
+     Prevents the fixed bottom navigation from
+     covering the page content.
+  ------------------------------------------------ */
+
+  .user-main {
+    padding-bottom: 82px;
+  }
+}
+
+
+/* =====================================================
+   TOUCH DEVICE LANDSCAPE
+
+   Explicitly preserve the same navigation when the
+   phone is rotated horizontally.
+
+   No desktop navigation is allowed to return.
+===================================================== */
+
+@media (orientation: landscape) and (hover: none) and (pointer: coarse) {
+
+  .user-desktop-nav {
+    display: none !important;
+  }
+
+  .user-profile-button,
+  .user-logout-button {
+    display: none !important;
+  }
+
+  .user-hamburger-button {
+    display: flex !important;
+  }
+
+  .user-bottom-nav {
+    display: flex !important;
+  }
+
+  .user-main {
+    padding-bottom: 82px;
   }
 }
