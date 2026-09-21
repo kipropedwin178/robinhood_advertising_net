@@ -151,16 +151,65 @@
 
 
 /* =====================================================
+   DEPOSIT / WITHDRAW NAVIGATION BUTTONS
+===================================================== */
+
+.user-deposit-button,
+.user-withdraw-button {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* DEPOSIT */
+
+.user-deposit-button {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+
+.user-deposit-button:hover {
+  background: #3803fa;
+  transform: translateY(-1px);
+}
+
+
+/* WITHDRAW */
+
+.user-withdraw-button {
+  background: #c0a31f;
+  color: #ffffff;
+}
+
+
+.user-withdraw-button:hover {
+  background: #256ac5;
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
    HAMBURGER BUTTON
 ===================================================== */
+
 .user-hamburger-button {
   width: 42px;
   height: 42px;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
+  flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.06);
@@ -423,18 +472,20 @@
 /* =====================================================
    BOTTOM NAVIGATION
 ===================================================== */
+
 .user-bottom-nav {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 900;
-  display: flex;
+  display: none;
   justify-content: space-around;
-  padding: 8px 5px;
+  align-items: center;
+  padding: 10px 3px;
   border-top: 1px solid #dbe4ef;
-  background: white;
-  box-shadow: 0 -3px 14px rgba(15, 23, 42, 0.08);
+  background: rgb(15, 6, 51);
+  box-shadow: 0 -3px 14px rgba(34, 95, 236, 0.08);
 }
 
 
@@ -446,7 +497,7 @@
   gap: 3px;
   padding: 5px;
   border-radius: 8px;
-  color: #64748b;
+  color: #ebedf0;
   text-decoration: none;
   font-size: 10px;
   font-weight: 600;
@@ -454,7 +505,7 @@
 
 
 .user-bottom-link.active {
-  color: #15803d;
+  color: #03f75c;
 }
 
 
@@ -497,9 +548,7 @@
     padding: 8px 10px;
     font-size: 12px;
   }
-
 }
-
 
 /* =====================================================
    MOBILE
@@ -510,7 +559,8 @@
   .user-navbar-inner {
     min-height: 62px;
     justify-content: space-between;
-    padding: 0 12px;
+    gap: 6px;
+    padding: 0 8px;
   }
 
 
@@ -521,24 +571,53 @@
 
   .user-navbar-actions {
     margin-left: auto;
+    gap: 5px;
+    flex-shrink: 0;
   }
 
 
+  /* DEPOSIT */
+
+  .user-deposit-button {
+    display: block;
+    padding: 7px 8px;
+    font-size: 10px;
+    border-radius: 7px;
+    white-space: nowrap;
+  }
+
+
+  /* WITHDRAW */
+
+  .user-withdraw-button {
+    display: block;
+    padding: 7px 8px;
+    font-size: 10px;
+    border-radius: 7px;
+    white-space: nowrap;
+  }
+
+
+  /* BALANCE */
+
   .user-balance {
     min-width: auto;
-    padding: 6px 9px;
+    padding: 5px 7px;
+    flex-shrink: 1;
   }
 
 
   .user-balance span {
-    font-size: 9px;
+    font-size: 8px;
   }
 
 
   .user-balance strong {
-    font-size: 11px;
+    font-size: 10px;
   }
 
+
+  /* PROFILE + LOGOUT */
 
   .user-profile-button,
   .user-logout-button {
@@ -546,10 +625,17 @@
   }
 
 
+  /* HAMBURGER */
+
   .user-hamburger-button {
     display: flex;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
   }
 
+
+  /* MAIN */
 
   .user-main {
     min-height: calc(100vh - 62px);
@@ -562,10 +648,24 @@
   }
 
 
+  /* BOTTOM NAVIGATION */
+
   .user-bottom-nav {
     display: flex;
   }
 
+
+  .user-bottom-link {
+    flex: 1;
+    min-width: 0;
+    padding: 5px 2px;
+    font-size: 10px;
+  }
+
+
+  .user-bottom-icon {
+    font-size: 17px;
+  }
 }
 
 
@@ -576,12 +676,46 @@
 @media (max-width: 380px) {
 
   .user-logo {
-    font-size: 21px;
+    font-size: 19px;
+  }
+
+
+  .user-navbar-inner {
+    gap: 4px;
+    padding: 0 6px;
+  }
+
+
+  .user-navbar-actions {
+    gap: 3px;
+  }
+
+
+  .user-deposit-button,
+  .user-withdraw-button {
+    padding: 6px 6px;
+    font-size: 9px;
+  }
+
+
+  .user-balance {
+    padding: 4px 5px;
+  }
+
+
+  .user-balance span {
+    font-size: 7px;
   }
 
 
   .user-balance strong {
-    font-size: 10px;
+    font-size: 9px;
+  }
+
+
+  .user-hamburger-button {
+    width: 36px;
+    height: 36px;
   }
 
 
@@ -612,47 +746,82 @@
     font-size: 11px;
   }
 
+
+  .user-bottom-link {
+    font-size: 9px;
+  }
+
+
+  .user-bottom-icon {
+    font-size: 16px;
+  }
 }
 /* =====================================================
-   DEPOSIT / WITHDRAW NAVIGATION BUTTONS
+   SMALL MOBILE
 ===================================================== */
 
-.user-deposit-button,
-.user-withdraw-button {
-  border: none;
-  border-radius: 8px;
-  padding: 9px 13px;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
+@media (max-width: 380px) {
+
+  .user-logo {
+    font-size: 21px;
+  }
 
 
-/* DEPOSIT - GREEN */
-
-.user-deposit-button {
-  background: #16a34a;
-  color: #ffffff;
-}
-
-.user-deposit-button:hover {
-  background: #3803fa;
-  transform: translateY(-1px);
-}
+  .user-navbar-actions {
+    gap: 6px;
+  }
 
 
-/* WITHDRAW - DARK BLUE */
+  .user-balance {
+    padding: 5px 7px;
+  }
 
-.user-withdraw-button {
-  background: #c0a31f;
-  color: #ffffff;
-}
 
-.user-withdraw-button:hover {
-  background: #256ac5;
-  transform: translateY(-1px);
+  .user-balance strong {
+    font-size: 10px;
+  }
+
+
+  .user-hamburger-button {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .user-side-drawer {
+    width: 340px;
+    max-width: 92vw;
+    padding: 18px;
+  }
+
+
+  .user-summary-section {
+    gap: 8px;
+  }
+
+
+  .user-summary-card {
+    padding: 11px 8px;
+  }
+
+
+  .user-summary-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+
+  .user-summary-card strong {
+    font-size: 11px;
+  }
+
+
+  .user-bottom-link {
+    font-size: 9px;
+  }
+
+
+  .user-bottom-icon {
+    font-size: 16px;
+  }
 }
