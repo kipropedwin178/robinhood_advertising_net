@@ -49,6 +49,7 @@ class AdminUserDetailResponse(BaseModel):
     referral_code: str
     referred_by: int | None = None
     role: str
+    profile_photo_url: str | None = None
     is_active: bool
 
     balance: float

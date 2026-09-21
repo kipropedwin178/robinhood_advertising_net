@@ -1,4 +1,3 @@
-
 from datetime import datetime
 
 from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String
@@ -49,6 +48,11 @@ class User(Base):
         ForeignKey("users.id"),
         nullable=True,
         index=True
+    )
+
+    profile_photo_url: Mapped[str | None] = mapped_column(
+        String(500),
+        nullable=True
     )
 
     password_hash: Mapped[str] = mapped_column(

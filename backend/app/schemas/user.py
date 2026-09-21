@@ -34,6 +34,8 @@ class UserResponse(BaseModel):
 
     referral_code: str
 
+    profile_photo_url: str | None = None
+
     role: str
 
     is_active: bool

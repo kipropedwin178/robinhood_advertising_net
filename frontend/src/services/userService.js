@@ -8,4 +8,30 @@ export const getMyProfile = async () => {
   );
 
   return response.data;
+
+};
+
+
+// =====================================================
+// UPLOAD PROFILE PHOTO
+// =====================================================
+
+export const uploadProfilePhoto = async (
+  file
+) => {
+
+  const formData = new FormData();
+
+  formData.append(
+    "file",
+    file
+  );
+
+  const response = await api.post(
+    "/api/users/upload-photo",
+    formData
+  );
+
+  return response.data;
+
 };

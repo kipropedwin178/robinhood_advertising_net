@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { getMyProfile } from "../services/userService";
+import {
+  getMyProfile,
+  uploadProfilePhoto
+} from "../services/userService";
 
 import "./Profile.css";
 
@@ -18,6 +21,15 @@ function Profile() {
 
   const [copied, setCopied] =
     useState(false);
+
+  const [uploadingPhoto, setUploadingPhoto] =
+    useState(false);
+
+  const [photoError, setPhotoError] =
+    useState("");
+
+  const fileInputRef =
+    useRef(null);
 
 
   // =====================================================
@@ -79,9 +91,11 @@ function Profile() {
     const date =
       new Date(dateValue);
 
-    if (Number.isNaN(
-      date.getTime()
-    )) {
+    if (
+      Number.isNaN(
+        date.getTime()
+      )
+    ) {
       return "Not available";
     }
 
@@ -172,6 +186,126 @@ function Profile() {
 
 
   // =====================================================
+  // OPEN PHOTO SELECTOR
+  // =====================================================
+
+  const handleSelectPhoto = () => {
+
+    if (uploadingPhoto) {
+      return;
+    }
+
+    setPhotoError("");
+
+    fileInputRef.current?.click();
+
+  };
+
+
+  // =====================================================
+  // HANDLE PHOTO UPLOAD
+  // =====================================================
+
+  const handlePhotoChange =
+    async (event) => {
+
+      const file =
+        event.target.files?.[0];
+
+      if (!file) {
+        return;
+      }
+
+
+      // -------------------------------------------------
+      // Validate file type
+      // -------------------------------------------------
+
+      const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ];
+
+      if (
+        !allowedTypes.includes(
+          file.type
+        )
+      ) {
+
+        setPhotoError(
+          "Please select a JPG, PNG, or WEBP image."
+        );
+
+        event.target.value = "";
+
+        return;
+
+      }
+
+
+      // -------------------------------------------------
+      // Validate file size
+      // -------------------------------------------------
+
+      const maxFileSize =
+        5 * 1024 * 1024;
+
+      if (
+        file.size > maxFileSize
+      ) {
+
+        setPhotoError(
+          "Profile photo must not exceed 5 MB."
+        );
+
+        event.target.value = "";
+
+        return;
+
+      }
+
+
+      try {
+
+        setUploadingPhoto(true);
+        setPhotoError("");
+
+
+        const updatedProfile =
+          await uploadProfilePhoto(
+            file
+          );
+
+
+        setProfile(
+          updatedProfile
+        );
+
+      } catch (error) {
+
+        console.error(
+          "Profile photo upload error:",
+          error
+        );
+
+        setPhotoError(
+          error.response?.data?.detail ||
+          "Unable to upload your profile photo."
+        );
+
+      } finally {
+
+        setUploadingPhoto(false);
+
+        event.target.value = "";
+
+      }
+
+    };
+
+
+  // =====================================================
   // LOADING
   // =====================================================
 
@@ -254,11 +388,66 @@ function Profile() {
 
       <div className="profile-header">
 
-        <div className="profile-avatar">
 
-          {profile.username
-            ?.charAt(0)
-            ?.toUpperCase() || "U"}
+        {/* =================================================
+            PROFILE PHOTO
+        ================================================= */}
+
+        <div className="profile-photo-container">
+
+          {profile.profile_photo_url ? (
+
+            <img
+              src={profile.profile_photo_url}
+              alt={`${profile.username} profile`}
+              className="profile-avatar profile-avatar-image"
+            />
+
+          ) : (
+
+            <div className="profile-avatar">
+
+              {profile.username
+                ?.charAt(0)
+                ?.toUpperCase() || "U"}
+
+            </div>
+
+          )}
+
+
+          <button
+            type="button"
+            className="profile-photo-button"
+            onClick={handleSelectPhoto}
+            disabled={uploadingPhoto}
+          >
+
+            {uploadingPhoto
+              ? "Uploading..."
+              : profile.profile_photo_url
+                ? "Change Photo"
+                : "Add Photo"}
+
+          </button>
+
+
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            onChange={handlePhotoChange}
+            className="profile-photo-input"
+          />
+
+
+          {photoError && (
+
+            <p className="profile-photo-error">
+              {photoError}
+            </p>
+
+          )}
 
         </div>
 

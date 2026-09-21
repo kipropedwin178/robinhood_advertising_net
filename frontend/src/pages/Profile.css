@@ -20,6 +20,24 @@
 }
 
 
+/* =====================================================
+   PROFILE PHOTO CONTAINER
+===================================================== */
+
+.profile-photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+
+  flex-shrink: 0;
+}
+
+
+/* =====================================================
+   PROFILE AVATAR
+===================================================== */
+
 .profile-avatar {
   width: 64px;
   height: 64px;
@@ -38,8 +56,91 @@
 
   font-size: 25px;
   font-weight: 800;
+
+  overflow: hidden;
 }
 
+
+/* =====================================================
+   PROFILE PHOTO IMAGE
+===================================================== */
+
+.profile-avatar-image {
+  object-fit: cover;
+
+  display: block;
+
+  border: 2px solid #16a34a;
+}
+
+
+/* =====================================================
+   PHOTO UPLOAD BUTTON
+===================================================== */
+
+.profile-photo-button {
+  padding: 5px 9px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: #0b1f3a;
+
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.profile-photo-button:hover {
+  background: #16a34a;
+}
+
+
+.profile-photo-button:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   HIDDEN FILE INPUT
+===================================================== */
+
+.profile-photo-input {
+  display: none;
+}
+
+
+/* =====================================================
+   PHOTO ERROR
+===================================================== */
+
+.profile-photo-error {
+  max-width: 150px;
+
+  margin: 0;
+
+  color: #dc2626;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+
+  text-align: center;
+}
+
+
+/* =====================================================
+   HEADER TEXT
+===================================================== */
 
 .profile-header h1 {
   margin: 0 0 5px;
@@ -425,7 +526,10 @@
 
 
   .profile-header {
+    align-items: center;
+
     gap: 12px;
+
     margin-bottom: 18px;
   }
 
@@ -445,6 +549,20 @@
 
   .profile-header p {
     font-size: 12px;
+  }
+
+
+  .profile-photo-button {
+    padding: 5px 8px;
+
+    font-size: 9px;
+  }
+
+
+  .profile-photo-error {
+    max-width: 120px;
+
+    font-size: 9px;
   }
 
 

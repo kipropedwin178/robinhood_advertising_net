@@ -583,10 +583,18 @@ function AdminUserDetails() {
         <section className="admin-user-profile-card">
 
           <div className="admin-user-avatar">
-            {user.username
-              ?.charAt(0)
-              .toUpperCase()}
-          </div>
+  {user.profile_photo_url ? (
+    <img
+      src={user.profile_photo_url}
+      alt={user.username}
+      className="admin-user-avatar-image"
+    />
+  ) : (
+    user.username
+      ?.charAt(0)
+      .toUpperCase()
+  )}
+</div>
 
           <div className="admin-user-profile-info">
             <h2>{user.username}</h2>

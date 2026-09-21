@@ -166,6 +166,7 @@ def get_user(
         "email": user.email,
         "phone_number": user.phone_number,
         "referral_code": user.referral_code,
+        "profile_photo_url": user.profile_photo_url,
         "referred_by": user.referred_by,
         "role": user.role,
         "is_active": user.is_active,
