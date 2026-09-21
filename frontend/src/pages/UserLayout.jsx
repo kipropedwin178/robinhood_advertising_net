@@ -759,6 +759,16 @@ function UserLayout() {
             Dashboard
           </button>
 
+          <button
+  type="button"
+  onClick={() =>
+    handleNavigation("/about")
+  }
+>
+  <span>ℹ</span>
+  About Us
+</button>
+
 
           <button
             type="button"
@@ -925,17 +935,6 @@ function UserLayout() {
             History
           </span>
         </NavLink>
-        <NavLink
-  to="/about"
-  className={({ isActive }) =>
-    isActive
-      ? "user-nav-link active"
-      : "user-nav-link"
-  }
->
-  About Us
-</NavLink>
-
 
         <NavLink
           to="/profile"

@@ -153,11 +153,10 @@
 /* =====================================================
    HAMBURGER BUTTON
 ===================================================== */
-
 .user-hamburger-button {
   width: 42px;
   height: 42px;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -424,14 +423,13 @@
 /* =====================================================
    BOTTOM NAVIGATION
 ===================================================== */
-
 .user-bottom-nav {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 900;
-  display: none;
+  display: flex;
   justify-content: space-around;
   padding: 8px 5px;
   border-top: 1px solid #dbe4ef;
