@@ -13,7 +13,7 @@ import {
 import { getMyWallet } from "../services/walletService";
 import { getMyMemberships } from "../services/membershipService";
 import { getReferralSummary } from "../services/referralService";
-import logo from "../assets/icon.png";
+import logo from "../assets/logo.jpeg";
 
 import NotificationBar from "../components/NotificationBar";
 import Footer from "../components/Footer";
