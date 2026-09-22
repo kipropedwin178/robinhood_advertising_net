@@ -13,6 +13,7 @@ import {
 import { getMyWallet } from "../services/walletService";
 import { getMyMemberships } from "../services/membershipService";
 import { getReferralSummary } from "../services/referralService";
+import logo from "../assets/icon.png";
 
 import NotificationBar from "../components/NotificationBar";
 import Footer from "../components/Footer";
@@ -337,14 +338,16 @@ function UserLayout() {
           {/* LOGO */}
 
           <button
-            type="button"
-            className="user-logo"
-            onClick={() =>
-              navigate("/dashboard")
-            }
-          >
-            RBH
-          </button>
+  type="button"
+  className="user-logo"
+  onClick={() => navigate("/dashboard")}
+>
+  <img
+    src={logo}
+    alt="Robinhood Advertising Network"
+    className="user-logo-image"
+  />
+</button>
 
 
           {/* DESKTOP NAVIGATION */}

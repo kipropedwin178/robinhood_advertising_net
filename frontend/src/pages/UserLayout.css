@@ -36,15 +36,29 @@
 ===================================================== */
 
 .user-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
   border: none;
   background: transparent;
-  color: white;
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 1px;
+
   cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;
+}
+.user-logo-image {
+  height: 52px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.user-logo {
+  transition: transform 0.2s ease;
+}
+
+.user-logo:hover {
+  transform: scale(1.05);
 }
 
 
