@@ -1,3 +1,4 @@
+
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
@@ -5,9 +6,7 @@ from app.models.payment_settings import PaymentSettings
 from app.schemas.payment_settings import PaymentSettingsUpdate
 
 
-def get_payment_settings(
-    db: Session
-):
+def get_payment_settings(db: Session):
     settings = (
         db.query(PaymentSettings)
         .first()
@@ -16,6 +15,7 @@ def get_payment_settings(
     if not settings:
         settings = PaymentSettings(
             enable_stk_push=True,
+            enable_send_money=True,
             enable_till=False,
             enable_paybill=False,
             enable_bank=False
@@ -32,39 +32,29 @@ def update_payment_settings(
     db: Session,
     data: PaymentSettingsUpdate
 ):
-    settings = get_payment_settings(
-        db=db
-    )
+    settings = get_payment_settings(db=db)
 
     update_data = data.model_dump(
         exclude_unset=True
     )
 
     for field, value in update_data.items():
-
         if isinstance(value, str):
             value = value.strip()
 
-        setattr(
-            settings,
-            field,
-            value
-        )
+        setattr(settings, field, value)
 
-    # At least one payment method
-    # must remain enabled.
-    if (
-        not settings.enable_stk_push
-        and not settings.enable_till
-        and not settings.enable_paybill
-        and not settings.enable_bank
-    ):
+    # At least one payment method must remain enabled.
+    if not any([
+        settings.enable_stk_push,
+        settings.enable_send_money,
+        settings.enable_till,
+        settings.enable_paybill,
+        settings.enable_bank
+    ]):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=(
-                "At least one payment method "
-                "must be enabled"
-            )
+            detail="At least one payment method must be enabled"
         )
 
     db.commit()

@@ -1,3 +1,4 @@
+
 from pydantic import BaseModel, Field
 
 
@@ -15,6 +16,22 @@ class PaymentSettingsUpdate(BaseModel):
     )
 
     stk_shortcode: str | None = Field(
+        default=None,
+        max_length=30
+    )
+
+    # =====================================================
+    # M-PESA SEND MONEY
+    # =====================================================
+
+    enable_send_money: bool = True
+
+    send_money_name: str | None = Field(
+        default=None,
+        max_length=100
+    )
+
+    send_money_number: str | None = Field(
         default=None,
         max_length=30
     )
@@ -94,6 +111,14 @@ class PaymentSettingsResponse(BaseModel):
     enable_stk_push: bool
     stk_business_name: str | None
     stk_shortcode: str | None
+
+    # =====================================================
+    # M-PESA SEND MONEY
+    # =====================================================
+
+    enable_send_money: bool
+    send_money_name: str | None
+    send_money_number: str | None
 
     # =====================================================
     # BUY GOODS TILL

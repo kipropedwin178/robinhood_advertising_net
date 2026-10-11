@@ -45,6 +45,24 @@ def get_user_payment_settings(
             else None
         ),
 
+                # =================================================
+        # M-PESA SEND MONEY
+        # =================================================
+
+        "enable_send_money": settings.enable_send_money,
+
+        "send_money_name": (
+            settings.send_money_name
+            if settings.enable_send_money
+            else None
+        ),
+
+        "send_money_number": (
+            settings.send_money_number
+            if settings.enable_send_money
+            else None
+        ),
+
         # =================================================
         # BUY GOODS TILL
         # =================================================

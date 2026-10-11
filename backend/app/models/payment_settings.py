@@ -1,3 +1,4 @@
+
 from sqlalchemy import Boolean, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -29,6 +30,26 @@ class PaymentSettings(Base):
     )
 
     stk_shortcode: Mapped[str | None] = mapped_column(
+        String(30),
+        nullable=True
+    )
+
+    # =====================================================
+    # M-PESA SEND MONEY
+    # =====================================================
+
+    enable_send_money: Mapped[bool] = mapped_column(
+        Boolean,
+        default=True,
+        nullable=False
+    )
+
+    send_money_name: Mapped[str | None] = mapped_column(
+        String(100),
+        nullable=True
+    )
+
+    send_money_number: Mapped[str | None] = mapped_column(
         String(30),
         nullable=True
     )
