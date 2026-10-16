@@ -1,4 +1,5 @@
 
+import logging
 import smtplib
 from datetime import datetime
 from decimal import Decimal
@@ -21,6 +22,9 @@ from app.models.transaction import Transaction
 from app.models.user import User
 
 
+logger = logging.getLogger(__name__)
+
+
 def _send_deposit_notification(
     username: str,
     rbh_number: str,
@@ -28,7 +32,9 @@ def _send_deposit_notification(
     confirmation_code: str,
     submitted_at: datetime,
     deposit_id: int,
-) -> None:
+) -> bool:
+    """Send an email notification without blocking deposit creation."""
+
     if not all([
         SMTP_HOST,
         SMTP_PORT,
@@ -37,13 +43,11 @@ def _send_deposit_notification(
         SMTP_FROM_EMAIL,
         DEPOSIT_NOTIFICATION_EMAIL,
     ]):
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail=(
-                "Email notifications are not configured yet. "
-                "Please contact support before retrying."
-            ),
+        logger.warning(
+            "Deposit #%s saved, but email notification is not configured.",
+            deposit_id,
         )
+        return False
 
     message = EmailMessage()
     message["Subject"] = (
@@ -78,15 +82,15 @@ The user's wallet must only be credited through admin approval.
             server.login(SMTP_USERNAME, SMTP_PASSWORD)
             server.send_message(message)
 
-    except Exception as exc:
-        # Do not log SMTP credentials or the email contents.
-        raise HTTPException(
-            status_code=status.HTTP_502_BAD_GATEWAY,
-            detail=(
-                "The deposit notification email could not be sent. "
-                "No deposit was recorded. Please try again later."
-            ),
-        ) from exc
+        return True
+
+    except Exception:
+        # Do not log SMTP credentials or email contents.
+        logger.exception(
+            "Email notification failed for deposit #%s.",
+            deposit_id,
+        )
+        return False
 
 
 def create_deposit(
@@ -97,7 +101,8 @@ def create_deposit(
     mpesa_confirmation_code: str | None = None,
 ):
     """
-    Create a pending manual deposit and notify the administrator.
+    Create a pending manual deposit.
+    Email failure does not prevent saving the deposit.
     Wallet credit remains exclusively in the admin approval workflow.
     """
 
@@ -174,32 +179,34 @@ def create_deposit(
         )
         db.add(transaction)
 
-        # Send notification before committing the request.
-        _send_deposit_notification(
-            username=user.username,
-            rbh_number=user.referral_code,
-            amount=amount,
-            confirmation_code=code,
-            submitted_at=submitted_at,
-            deposit_id=deposit.id,
-        )
-
+        # Save the deposit and transaction first.
         db.commit()
         db.refresh(deposit)
 
-    except HTTPException:
-        db.rollback()
-        raise
-
     except Exception as exc:
         db.rollback()
+        logger.exception("Failed to create a deposit request.")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Deposit request could not be created",
         ) from exc
 
+    # Notify after the database commit. Email failure cannot undo the deposit.
+    notification_sent = _send_deposit_notification(
+        username=user.username,
+        rbh_number=user.referral_code,
+        amount=amount,
+        confirmation_code=code,
+        submitted_at=submitted_at,
+        deposit_id=deposit.id,
+    )
+
     return {
         "deposit": deposit,
         "referral_bonus": Decimal("0.00"),
         "is_first_deposit": False,
+        "notification_sent": notification_sent,
+        "message": (
+            "Deposit request submitted successfully. Pending verification."
+        ),
     }
