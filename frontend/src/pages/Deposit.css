@@ -333,3 +333,146 @@
     padding: 12px;
   }
 }
+
+/* DEPOSIT SUBMISSION FORM */
+
+.deposit-submission-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #edf1f5;
+}
+
+.deposit-submission-section h3 {
+  margin: 0 0 8px;
+  color: #0b2447;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.deposit-submission-description {
+  margin: 0 0 20px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.deposit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.deposit-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.deposit-form-group label {
+  color: #243b5a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.deposit-form-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 47px;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  color: #172b4d;
+  font: inherit;
+  font-size: 14px;
+}
+
+.deposit-form-input:focus {
+  border-color: #168044;
+  box-shadow: 0 0 0 3px rgba(22, 128, 68, 0.1);
+}
+
+.deposit-form-input:disabled {
+  background: #f1f5f9;
+  cursor: not-allowed;
+}
+
+.deposit-form-help {
+  margin: 0;
+  color: #718096;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.deposit-submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #138342;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.deposit-submit-button:hover:not(:disabled) {
+  background: #0f6b35;
+}
+
+.deposit-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.deposit-form-message {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.deposit-form-message.success {
+  border: 1px solid #bbebcd;
+  background: #effbf3;
+  color: #176638;
+}
+
+.deposit-form-message.error {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #b42318;
+}
+
+.deposit-pending-note {
+  margin-top: 16px;
+  padding: 13px 14px;
+  border: 1px solid #f1dfb5;
+  border-radius: 10px;
+  background: #fffbeb;
+  color: #805b16;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.deposit-pending-note p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .deposit-submission-section {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .deposit-form {
+    gap: 15px;
+  }
+}

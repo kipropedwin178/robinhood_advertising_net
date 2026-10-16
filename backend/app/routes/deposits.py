@@ -15,29 +15,32 @@ router = APIRouter(
 )
 
 
-# =========================================================
-# CREATE DEPOSIT REQUEST
-# =========================================================
-
 @router.post("/")
 def create_deposit_request(
     deposit_data: DepositCreate,
     current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     result = create_deposit(
         db=db,
         user_id=current_user.id,
         amount=deposit_data.amount,
-        payment_method=deposit_data.payment_method
+        payment_method=deposit_data.payment_method,
+        mpesa_confirmation_code=(
+            deposit_data.mpesa_confirmation_code
+        ),
     )
 
+    deposit = result["deposit"]
+
     return {
-        "message": "Deposit request submitted successfully",
-        "deposit_id": result["deposit"].id,
-        "amount": result["deposit"].amount,
-        "payment_method": result["deposit"].payment_method,
-        "status": result["deposit"].status,
-        "is_first_deposit": result["is_first_deposit"],
-        "referral_bonus": result["referral_bonus"]
+        "message": (
+            "Deposit submitted successfully. "
+            "Your request is pending verification."
+        ),
+        "deposit_id": deposit.id,
+        "amount": deposit.amount,
+        "payment_method": deposit.payment_method,
+        "status": deposit.status,
+        "notification_sent": True,
     }

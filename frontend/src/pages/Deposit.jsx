@@ -2,7 +2,11 @@
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
-import { getPaymentSettings } from "../services/depositService";
+import {
+  getPaymentSettings,
+  createDeposit,
+} from "../services/depositService";
+
 import "./Deposit.css";
 
 function Deposit() {
@@ -11,6 +15,11 @@ function Deposit() {
   const [settings, setSettings] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showOtherMethods, setShowOtherMethods] = useState(false);
+
+  const [amount, setAmount] = useState("");
+  const [confirmationCode, setConfirmationCode] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [formMessage, setFormMessage] = useState(null);
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -45,6 +54,65 @@ function Deposit() {
         "Unable to copy the number. Please copy it manually.",
         "error"
       );
+    }
+  };
+
+  const handleDepositSubmit = async (event) => {
+    event.preventDefault();
+    setFormMessage(null);
+
+    const parsedAmount = Number(amount);
+    const code = confirmationCode.trim().toUpperCase();
+
+    if (!Number.isFinite(parsedAmount) || parsedAmount <= 0) {
+      setFormMessage({
+        type: "error",
+        text: "Enter a valid deposit amount.",
+      });
+      return;
+    }
+
+    if (!/^[A-Z0-9]{5,20}$/.test(code)) {
+      setFormMessage({
+        type: "error",
+        text: "Enter a valid M-PESA confirmation code (5–20 letters or numbers).",
+      });
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      const result = await createDeposit({
+        amount: parsedAmount.toFixed(2),
+        payment_method: "MPESA",
+        mpesa_confirmation_code: code,
+      });
+
+      setFormMessage({
+        type: "success",
+        text: `${result.message} Deposit reference: #${result.deposit_id}.`,
+      });
+
+      setAmount("");
+      setConfirmationCode("");
+      showNotification(
+        "Deposit submitted and notification email sent.",
+        "success"
+      );
+    } catch (error) {
+      const message =
+        error.response?.data?.detail ||
+        "Unable to submit the deposit. Please try again.";
+
+      setFormMessage({
+        type: "error",
+        text: message,
+      });
+
+      showNotification(message, "error");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -131,6 +199,85 @@ function Deposit() {
             <span className="notice-icon" aria-hidden="true">i</span>
             <p>Keep your M-PESA confirmation message as proof of payment.</p>
           </div>
+
+          <div className="deposit-submission-section">
+            <h3>Confirm Your Payment</h3>
+            <p className="deposit-submission-description">
+              After sending money, enter the exact amount and confirmation
+              code from your M-PESA message.
+            </p>
+
+            <form className="deposit-form" onSubmit={handleDepositSubmit}>
+              <div className="deposit-form-group">
+                <label htmlFor="deposit-amount">Amount (KES)</label>
+                <input
+                  id="deposit-amount"
+                  className="deposit-form-input"
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                  value={amount}
+                  onChange={(event) => setAmount(event.target.value)}
+                  placeholder="e.g. 100"
+                  required
+                  disabled={submitting}
+                />
+              </div>
+
+              <div className="deposit-form-group">
+                <label htmlFor="mpesa-confirmation-code">
+                  M-PESA Confirmation Code
+                </label>
+                <input
+                  id="mpesa-confirmation-code"
+                  className="deposit-form-input"
+                  type="text"
+                  minLength="5"
+                  maxLength="20"
+                  autoCapitalize="characters"
+                  autoComplete="off"
+                  spellCheck="false"
+                  value={confirmationCode}
+                  onChange={(event) =>
+                    setConfirmationCode(
+                      event.target.value.toUpperCase().replace(/\s/g, "")
+                    )
+                  }
+                  placeholder="e.g. QWE123ABC"
+                  required
+                  disabled={submitting}
+                />
+                <p className="deposit-form-help">
+                  Use the transaction code in your M-PESA confirmation message.
+                  Each code can only be submitted once.
+                </p>
+              </div>
+
+              {formMessage && (
+                <p
+                  className={`deposit-form-message ${formMessage.type}`}
+                  role="status"
+                >
+                  {formMessage.text}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                className="deposit-submit-button"
+                disabled={submitting || !settings.send_money_number}
+              >
+                {submitting ? "Submitting..." : "Submit Deposit for Verification"}
+              </button>
+            </form>
+
+            <div className="deposit-pending-note">
+              <p>
+                Your deposit remains pending until an administrator verifies
+                and approves the payment.
+              </p>
+            </div>
+          </div>
         </section>
       ) : (
         <section className="deposit-card payment-unavailable">
@@ -156,7 +303,11 @@ function Deposit() {
             aria-expanded={showOtherMethods}
           >
             <span>Other Payment Methods</span>
-            <span className={`toggle-chevron ${showOtherMethods ? "expanded" : ""}`}>
+            <span
+              className={`toggle-chevron ${
+                showOtherMethods ? "expanded" : ""
+              }`}
+            >
               &#9662;
             </span>
           </button>
