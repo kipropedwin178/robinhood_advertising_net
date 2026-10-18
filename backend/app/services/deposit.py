@@ -102,6 +102,8 @@ def create_deposit(
 ):
     """
     Create a pending manual deposit.
+
+    Only one pending deposit is allowed per user.
     Email failure does not prevent saving the deposit.
     Wallet credit remains exclusively in the admin approval workflow.
     """
@@ -130,7 +132,14 @@ def create_deposit(
             detail="Enter a valid M-PESA confirmation code",
         )
 
-    user = db.query(User).filter(User.id == user_id).first()
+    # Lock the user's row to help prevent simultaneous requests
+    # from creating multiple pending deposits for the same user.
+    user = (
+        db.query(User)
+        .filter(User.id == user_id)
+        .with_for_update()
+        .first()
+    )
 
     if not user:
         raise HTTPException(
@@ -138,6 +147,27 @@ def create_deposit(
             detail="User not found",
         )
 
+    # Allow only one pending deposit per user.
+    pending_deposit = (
+        db.query(Deposit)
+        .filter(
+            Deposit.user_id == user_id,
+            Deposit.status == "PENDING",
+        )
+        .first()
+    )
+
+    if pending_deposit:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=(
+                "You already have a pending deposit. "
+                "Please wait until it is approved or rejected "
+                "before submitting another."
+            ),
+        )
+
+    # Prevent reuse of an M-PESA confirmation code.
     existing_code = (
         db.query(Deposit)
         .filter(
@@ -186,12 +216,13 @@ def create_deposit(
     except Exception as exc:
         db.rollback()
         logger.exception("Failed to create a deposit request.")
+
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Deposit request could not be created",
         ) from exc
 
-    # Notify after the database commit. Email failure cannot undo the deposit.
+    # Email failure cannot undo the saved deposit.
     notification_sent = _send_deposit_notification(
         username=user.username,
         rbh_number=user.referral_code,
