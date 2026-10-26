@@ -1,725 +1,378 @@
+
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 import {
   getAvailableMembershipLevels,
   getMyMemberships,
-  activateMembership
+  activateMembership,
 } from "../services/membershipService";
 
 import "./Memberships.css";
 
-
 function Memberships() {
-
-  const {
-    showNotification,
-    fetchAccountData
-  } = useOutletContext();
-
+  const { showNotification, fetchAccountData } =
+    useOutletContext();
 
   const [memberships, setMemberships] = useState([]);
-
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState("");
-
-  const [activatingLevel, setActivatingLevel] =
-    useState(null);
-
-  const [confirmationLevel, setConfirmationLevel] =
-    useState(null);
-
-
-  // =========================================================
-  // LOAD AVAILABLE MEMBERSHIPS
-  // =========================================================
+  const [activatingLevel, setActivatingLevel] = useState(null);
+  const [confirmationLevel, setConfirmationLevel] = useState(null);
 
   const fetchMemberships = async () => {
-
     try {
-
       setLoading(true);
       setError("");
 
-
-      // Get all membership levels created by admin
       const availableMemberships =
         await getAvailableMembershipLevels();
 
-
-      // Get memberships already activated by this user
-      const myMemberships =
-        await getMyMemberships();
-
+      const myMemberships = await getMyMemberships();
 
       const activatedLevels = new Set(
         (myMemberships || [])
-          .filter(
-            membership =>
-              membership.is_active
-          )
-          .map(
-            membership =>
-              membership.level
-          )
+          .filter((membership) => membership.is_active)
+          .map((membership) => membership.level)
       );
 
+      const membershipsWithStatus = (
+        availableMemberships || []
+      ).map((membership) => ({
+        ...membership,
+        is_activated: activatedLevels.has(membership.level),
+      }));
 
-      // Combine available memberships with
-      // the user's activation status
-      const membershipsWithStatus =
-        (availableMemberships || []).map(
-          membership => ({
-            ...membership,
-
-            is_activated:
-              activatedLevels.has(
-                membership.level
-              )
-          })
-        );
-
-
-      setMemberships(
-        membershipsWithStatus
-      );
-
+      setMemberships(membershipsWithStatus);
     } catch (error) {
+      console.error("Memberships error:", error);
 
-      console.error(
-        "Memberships error:",
-        error
-      );
-
-
-      const errorMessage =
+      setError(
         error?.response?.data?.detail ||
-        "Failed to load memberships.";
-
-
-      setError(errorMessage);
-
+          "Failed to load memberships."
+      );
     } finally {
-
       setLoading(false);
-
     }
-
   };
-
 
   useEffect(() => {
-
     fetchMemberships();
-
   }, []);
 
-
-  // =========================================================
-  // OPEN CONFIRMATION
-  // =========================================================
-
-  const handleActivateClick = (
-    level
-  ) => {
-
+  const handleActivateClick = (level) => {
     setConfirmationLevel(level);
-
   };
 
-
-  // =========================================================
-  // CANCEL CONFIRMATION
-  // =========================================================
-
   const handleCancelActivation = () => {
-
-    if (
-      activatingLevel !== null
-    ) {
-
+    if (activatingLevel !== null) {
       return;
-
     }
 
     setConfirmationLevel(null);
-
   };
 
+  const handleConfirmActivation = async () => {
+    if (confirmationLevel === null) {
+      return;
+    }
 
-  // =========================================================
-  // CONFIRM ACTIVATION
-  // =========================================================
+    const level = confirmationLevel;
 
-  const handleConfirmActivation =
-    async () => {
+    try {
+      setActivatingLevel(level);
 
-      if (
-        confirmationLevel === null
-      ) {
+      const response = await activateMembership(level);
 
-        return;
+      setConfirmationLevel(null);
 
-      }
-
-
-      const level =
-        confirmationLevel;
-
-
-      try {
-
-        setActivatingLevel(level);
-
-
-        const response =
-          await activateMembership(
-            level
-          );
-
-
-        setConfirmationLevel(null);
-
-
-        showNotification(
-          response?.message ||
+      showNotification(
+        response?.message ||
           `Level ${level} activated successfully.`,
-          "success"
-        );
+        "success"
+      );
 
+      await fetchMemberships();
+      await fetchAccountData();
+    } catch (error) {
+      console.error("Membership activation error:", error);
 
-        // Refresh memberships so the
-        // newly activated level shows
-        // "Activated"
-        await fetchMemberships();
+      const errorMessage =
+        error?.response?.data?.detail ||
+        "Failed to activate membership.";
 
+      setConfirmationLevel(null);
 
-        // Refresh wallet/dashboard data
-        await fetchAccountData();
-
-      } catch (error) {
-
-        console.error(
-          "Membership activation error:",
-          error
-        );
-
-
-        const errorMessage =
-          error?.response?.data?.detail ||
-          "Failed to activate membership.";
-
-
-        setConfirmationLevel(null);
-
-
-        showNotification(
-          errorMessage,
-          "error"
-        );
-
-      } finally {
-
-        setActivatingLevel(null);
-
-      }
-
-    };
-
-
-  // =========================================================
-  // FORMAT MONEY
-  // =========================================================
-
-  const formatMoney = (
-    amount
-  ) => {
-
-    const value =
-      Number(amount || 0);
-
-
-    return `KES ${value.toLocaleString(
-      "en-KE",
-      {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }
-    )}`;
-
+      showNotification(errorMessage, "error");
+    } finally {
+      setActivatingLevel(null);
+    }
   };
 
+  const formatMoney = (amount) => {
+    const value = Number(amount || 0);
 
-  // =========================================================
-  // LOADING
-  // =========================================================
+    return `KES ${value.toLocaleString("en-KE", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}`;
+  };
 
   if (loading) {
-
     return (
-
       <div className="memberships-page">
-
         <div className="memberships-loading">
-
-          <div className="memberships-spinner"></div>
-
-          <p>
-            Loading memberships...
-          </p>
-
+          <div className="memberships-spinner" />
+          <p>Loading memberships...</p>
         </div>
-
       </div>
-
     );
-
   }
 
-
-  // =========================================================
-  // PAGE
-  // =========================================================
-
   return (
-
     <div className="memberships-page">
-
-
       <div className="memberships-header">
-
-        <h1>
-          Memberships
-        </h1>
-
+        <h1>Memberships</h1>
         <p>
-          Choose a membership level and
-          start earning daily rewards.
+          Explore phone details, compare membership fees,
+          and view daily rewards.
         </p>
-
       </div>
 
-
-      {/* =====================================================
-          ERROR
-      ===================================================== */}
-
       {error && (
-
         <div className="memberships-message error">
-
-          <p>
-            {error}
-          </p>
-
-          <button
-            type="button"
-            onClick={fetchMemberships}
-          >
+          <p>{error}</p>
+          <button type="button" onClick={fetchMemberships}>
             Retry
           </button>
-
         </div>
-
       )}
 
-
-      {/* =====================================================
-          NO MEMBERSHIPS
-      ===================================================== */}
-
-      {memberships.length === 0 &&
-        !error && (
-
-          <div className="memberships-empty">
-
-            <h2>
-              No Memberships Available
-            </h2>
-
-            <p>
-              Membership levels are currently
-              unavailable.
-            </p>
-
-          </div>
-
-        )}
-
-
-      {/* =====================================================
-          MEMBERSHIP GRID
-      ===================================================== */}
+      {memberships.length === 0 && !error && (
+        <div className="memberships-empty">
+          <h2>No Memberships Available</h2>
+          <p>
+            Membership levels are currently unavailable.
+          </p>
+        </div>
+      )}
 
       {memberships.length > 0 && (
-
         <div className="memberships-grid">
+          {memberships.map((membership) => {
+            const level = membership.level;
+            const isActive = membership.is_activated;
+            const isActivating = activatingLevel === level;
 
-          {memberships.map(
-            (membership) => {
-
-              const level =
-                membership.level;
-
-
-              const isActive =
-                membership.is_activated;
-
-
-              const isActivating =
-                activatingLevel === level;
-
-
-              return (
-
-                <div
-                  className="membership-card"
-                  key={
-                    membership.id ||
-                    level
-                  }
-                >
-
-
-                  {/* =========================================
-                      CARD TOP
-                  ========================================= */}
-
+            return (
+              <article
+                className="membership-card"
+                key={membership.id || level}
+              >
+                {/* COMPACT PHONE DETAILS CARD */}
+                <section className="membership-product-card">
                   <div className="membership-card-top">
-
                     <span className="membership-level">
-
                       Level {level}
-
                     </span>
 
-
                     {isActive && (
-
                       <span className="membership-active activated">
-
                         Active
-
                       </span>
-
                     )}
-
                   </div>
 
-
-                  {/* =========================================
-                      PRODUCT PHOTO
-                  ========================================= */}
-
                   {membership.product_photo && (
-
                     <div className="membership-product-photo">
-
                       <img
-                        src={
-                          membership.product_photo
-                        }
+                        src={membership.product_photo}
                         alt={
                           membership.product_name ||
                           `Membership Level ${level}`
                         }
+                        loading="lazy"
                       />
-
                     </div>
-
                   )}
 
+                  <div className="membership-product-content">
+                    <h2>
+                      {membership.product_name ||
+                        `Membership Level ${level}`}
+                    </h2>
 
-                  {/* =========================================
-                      PRODUCT NAME
-                  ========================================= */}
+                    {membership.description && (
+                      <p className="membership-description">
+                        {membership.description}
+                      </p>
+                    )}
 
-                  <h2>
-                    {membership.product_name}
-                  </h2>
+                    <div className="membership-product-info">
+                      <div className="membership-info-row">
+                        <span>Phone Price</span>
+                        <strong>
+                          {formatMoney(membership.product_price)}
+                        </strong>
+                      </div>
 
-
-                  {/* =========================================
-                      DESCRIPTION
-                  ========================================= */}
-
-                  <p className="membership-description">
-
-                    {membership.description}
-
-                  </p>
-
-
-                  {/* =========================================
-                      MEMBERSHIP INFORMATION
-                  ========================================= */}
-
-                  <div className="membership-info">
-
-
-                    <div className="membership-info-row">
-
-                      <span>
-                        Product Price
-                      </span>
-
-                      <strong>
-                        {formatMoney(
-                          membership.product_price
-                        )}
-                      </strong>
-
+                      {membership.release_date && (
+                        <div className="membership-info-row">
+                          <span>Release Date</span>
+                          <strong>
+                            {membership.release_date}
+                          </strong>
+                        </div>
+                      )}
                     </div>
 
+                    {membership.advertisement_message && (
+                      <div className="membership-advertisement">
+                        <h3>Advertisement</h3>
+                        <p>
+                          {membership.advertisement_message}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </section>
 
-                    <div className="membership-info-row">
+                {/* ACTIVATION FEE AND DAILY REWARDS CARD */}
+                <section className="membership-rewards-card">
+                  <div className="membership-rewards-heading">
+                    <span className="membership-rewards-icon">
+                      ★
+                    </span>
 
-                      <span>
-                        Activation Fee
-                      </span>
-
-                      <strong>
-                        {formatMoney(
-                          membership.activation_fee
-                        )}
-                      </strong>
-
+                    <div>
+                      <h3>Level Benefits</h3>
+                      <p>
+                        Review the amounts before activating
+                      </p>
                     </div>
-
-
-                    <div className="membership-info-row">
-
-                      <span>
-                        Daily Reward
-                      </span>
-
-                      <strong className="reward">
-
-                        {formatMoney(
-                          membership.daily_reward
-                        )}
-
-                      </strong>
-
-                    </div>
-
-
-                    <div className="membership-info-row">
-
-                      <span>
-                        Cycle
-                      </span>
-
-                      <strong>
-
-                        {membership.cycle_days}
-                        {" "}
-                        days
-
-                      </strong>
-
-                    </div>
-
-
-                    <div className="membership-info-row">
-
-                      <span>
-                        Release Date
-                      </span>
-
-                      <strong>
-
-                        {membership.release_date}
-
-                      </strong>
-
-                    </div>
-
                   </div>
 
+                  <div className="membership-benefit">
+                    <span className="membership-benefit-label">
+                      Activation Fee
+                    </span>
 
-                  {/* =========================================
-                      ADVERTISEMENT
-                  ========================================= */}
+                    <strong className="membership-activation-amount">
+                      {formatMoney(membership.activation_fee)}
+                    </strong>
 
-                  {membership.advertisement_message && (
+                    <span className="membership-benefit-note">
+                      One-time activation cost
+                    </span>
+                  </div>
 
-                    <div className="membership-advertisement">
+                  <div className="membership-benefit membership-daily-benefit">
+                    <span className="membership-benefit-label">
+                      Daily Commission.
+                    </span>
 
-                      <h3>
-                        Advertisement
-                      </h3>
+                    <strong className="membership-daily-amount">
+                      {formatMoney(membership.daily_reward)}
+                    </strong>
 
-                      <p>
-                        {membership.advertisement_message}
-                      </p>
+                    <span className="membership-benefit-note">
+                      Per day, according to membership terms
+                    </span>
+                  </div>
 
-                    </div>
+                  {/* CYCLE DIRECTLY BELOW DAILY REWARDS */}
+                  <div className="membership-cycle-row">
+                    <span>Earning Cycle</span>
+                    <strong>
+                      {membership.cycle_days} days
+                    </strong>
+                  </div>
+                </section>
 
-                  )}
-
-
-                  {/* =========================================
-                      ACTIVATION BUTTON
-                  ========================================= */}
-
-                  {isActive ? (
-
-                    <button
-                      type="button"
-                      className="
-                        membership-activate-button
-                        membership-activated-button
-                      "
-                      disabled
-                    >
-
-                      Activated
-
-                    </button>
-
-                  ) : (
-
-                    <button
-                      type="button"
-                      className="membership-activate-button"
-                      onClick={() =>
-                        handleActivateClick(
-                          level
-                        )
-                      }
-                      disabled={
-                        isActivating
-                      }
-                    >
-
-                      {isActivating
-                        ? "Activating..."
-                        : "Activate Now"}
-
-                    </button>
-
-                  )}
-
-                </div>
-
-              );
-
-            }
-          )}
-
+                {/* ACTIVATION BUTTON */}
+                {isActive ? (
+                  <button
+                    type="button"
+                    className="membership-activate-button membership-activated-button"
+                    disabled
+                  >
+                    ✓ Activated...
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="membership-activate-button"
+                    onClick={() => handleActivateClick(level)}
+                    disabled={isActivating}
+                  >
+                    {isActivating
+                      ? "Activating..."
+                      : "Activate Now"}
+                  </button>
+                )}
+              </article>
+            );
+          })}
         </div>
-
       )}
 
-
-      {/* =====================================================
-          CONFIRMATION MODAL
-      ===================================================== */}
-
+      {/* ACTIVATION CONFIRMATION MODAL */}
       {confirmationLevel !== null && (
-
         <div
           className="membership-confirmation-overlay"
-          onClick={
-            handleCancelActivation
-          }
+          onClick={handleCancelActivation}
         >
-
           <div
             className="membership-confirmation-modal"
-            onClick={(event) =>
-              event.stopPropagation()
-            }
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="membership-confirmation-title"
+            onClick={(event) => event.stopPropagation()}
           >
-
-
             <div className="membership-confirmation-icon">
-
               ?
-
             </div>
 
-
-            <h2>
+            <h2 id="membership-confirmation-title">
               Confirm Activation
             </h2>
 
-
             <p>
-
-              Are you sure you want to
-              activate
-
-              <strong>
-                {" "}
-                Level {confirmationLevel}
-              </strong>
-              ?
-
+              Are you sure you want to activate
+              <strong> Level {confirmationLevel}</strong>?
             </p>
-
 
             <p className="membership-confirmation-warning">
-
-              The activation fee will be
-              deducted from your available
-              balance.
-
+              The activation fee will be deducted from your
+              available balance.
             </p>
 
-
             <div className="membership-confirmation-actions">
-
-
               <button
                 type="button"
                 className="membership-confirmation-cancel"
-                onClick={
-                  handleCancelActivation
-                }
-                disabled={
-                  activatingLevel !== null
-                }
+                onClick={handleCancelActivation}
+                disabled={activatingLevel !== null}
               >
-
                 Cancel
-
               </button>
-
 
               <button
                 type="button"
                 className="membership-confirmation-confirm"
-                onClick={
-                  handleConfirmActivation
-                }
-                disabled={
-                  activatingLevel !== null
-                }
+                onClick={handleConfirmActivation}
+                disabled={activatingLevel !== null}
               >
-
                 {activatingLevel !== null
                   ? "Activating..."
                   : "Confirm Activation"}
-
               </button>
-
-
             </div>
-
           </div>
-
         </div>
-
       )}
-
     </div>
-
   );
-
 }
-
 
 export default Memberships;

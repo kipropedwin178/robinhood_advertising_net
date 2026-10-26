@@ -899,7 +899,7 @@ function UserLayout() {
           </span>
 
           <span>
-            Memberships
+            Levels
           </span>
         </NavLink>
 
