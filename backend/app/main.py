@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -51,13 +52,27 @@ def startup_event():
 # CORS
 # =========================================================
 
+allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+
+    # Existing Render frontend
+    "https://robinhood-advertising.onrender.com",
+
+    # Custom frontend domain
+    "https://robinhood-adv.top",
+    "https://www.robinhood-adv.top",
+
+    # Existing environment configuration
+    FRONTEND_URL,
+]
+
+# Remove duplicate origins while preserving their order.
+allowed_origins = list(dict.fromkeys(allowed_origins))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        FRONTEND_URL,
-    ],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -69,48 +84,21 @@ app.add_middleware(
 # =========================================================
 
 app.include_router(auth_router)
-
 app.include_router(users_router)
-
 app.include_router(memberships_router)
-
 app.include_router(deposits_router)
-
 app.include_router(tasks_router)
-
 app.include_router(withdrawals_router)
-
 app.include_router(wallet_router)
-
 app.include_router(admin_router)
 
-app.include_router(
-    admin_membership_router
-)
-
-app.include_router(
-    referral_router
-)
-
-app.include_router(
-    admin_uploads_router
-)
-
-app.include_router(
-    transactions_router
-)
-
-app.include_router(
-    admin_payment_settings_router
-)
-
-app.include_router(
-    payment_settings_router
-)
-
-app.include_router(
-    earnings_router
-)
+app.include_router(admin_membership_router)
+app.include_router(referral_router)
+app.include_router(admin_uploads_router)
+app.include_router(transactions_router)
+app.include_router(admin_payment_settings_router)
+app.include_router(payment_settings_router)
+app.include_router(earnings_router)
 
 
 # =========================================================
